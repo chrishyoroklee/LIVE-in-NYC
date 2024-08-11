@@ -82,14 +82,14 @@ const LIGHT_THEME: Theme = {
       primary: '#FFFFFF',
     },
     button: {
-      primary: '#B00041',
+      primary: '#9300b0',
       secondary: '#F0F0F0',
       tertiary: '#7676801F',
       disabled: 'rgba(0, 0, 0, 0.4)',
       system: '#0A84FF',
     },
     buttonText: {
-      primary: '#B00041',
+      primary: '#9300b0',
       secondary: '#FFFFFF',
       link: '#262626',
       system: '#0A84FF',
@@ -108,7 +108,7 @@ const LIGHT_THEME: Theme = {
       value: '#262626',
     },
     icon: {
-      primary: '#B00041',
+      primary: '#9300b0',
       secondary: '#262626',
       tertiary: '#FFFFFF',
     },
@@ -117,7 +117,7 @@ const LIGHT_THEME: Theme = {
       secondary: '#F0F0F0',
     },
     card: {
-      primary: '#B00041',
+      primary: '#9300b0',
       secondary: '#E9E9EB',
       tertiary: '#FFFFFF',
     },
@@ -149,14 +149,14 @@ const DARK_THEME: Theme = {
       primary: '#1C1C1E',
     },
     button: {
-      primary: '#B00041',
+      primary: '#9300b0',
       secondary: '#2C2C2E',
       tertiary: '#7676803D',
       disabled: 'rgba(0, 0, 0, 0.4)',
       system: '#0A84FF',
     },
     buttonText: {
-      primary: '#B00041',
+      primary: '#9300b0',
       secondary: '#FFFFFF',
       link: '#FFFFFF',
       system: '#0A84FF',
@@ -175,7 +175,7 @@ const DARK_THEME: Theme = {
       value: '#FFFFFF',
     },
     icon: {
-      primary: '#B00041',
+      primary: '#9300b0',
       secondary: '#FFFFFF',
       tertiary: '#FFFFFF',
     },
@@ -184,7 +184,7 @@ const DARK_THEME: Theme = {
       secondary: '#2C2C2E',
     },
     card: {
-      primary: '#B00041',
+      primary: '#9300b0',
       secondary: '#4A4A4A',
       tertiary: '#1C1C1E',
     },
@@ -194,7 +194,7 @@ const DARK_THEME: Theme = {
     navbar: {
       primary: '#000000',
       transparent: 'rgba(0,0,0,0.85)',
-      active: '#B00041',
+      active: '#9300b0',
       inactive: '#A4A4A4',
     },
     contrast: {
