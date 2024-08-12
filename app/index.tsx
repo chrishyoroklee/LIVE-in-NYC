@@ -31,10 +31,6 @@ export default function HomeScreen() {
     'Zinc Bar',
   ];
 
-  const handlePress = (venue: string) => {
-    alert(`You pressed ${venue}`);
-  };
-
   return (
     <Container>
         <Header>
@@ -84,6 +80,7 @@ const Title = styled(Text)(({ theme }) => ({
     fontWeight: 'bold',
     color: theme.colors.text.primary,
     marginBottom: theme.spacing(5),
+    marginLeft: theme.spacing(2),
   }));
 
 const DateSelector = styled(View)(({ theme }) => ({
@@ -91,6 +88,7 @@ const DateSelector = styled(View)(({ theme }) => ({
   justifyContent: 'center',
   alignItems: 'center',
   marginBottom: theme.spacing(5),
+  marginTop: theme.spacing(2),
 }));
 
 const DateText = styled(Text)(({ theme }) => ({
@@ -125,5 +123,5 @@ const Circle = styled(View)(({ theme }) => ({
 
 const VenueText = styled(Text)(({ theme }) => ({
   fontSize: 16,
-  color: theme.colors.text.primary,
+  color: theme.colors.buttonText.primary,
 }));
