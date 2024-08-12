@@ -1,15 +1,32 @@
 import { View, Text, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from '@emotion/native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useNavigation } from '@react-navigation/native'
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '@emotion/react'
 
+interface Show {
+  id: string;
+  time: string;
+  doorsOpen: string;
+  band: string;
+}
+
+const smallsData: Record<string, Show[]> = require('../../data/Smalls.json');
+
 const SmallsScreen = () => {
   const navigation = useNavigation();
   const theme = useTheme();
 
+  const [selectedDate, setSelectedDate] = useState<string>('2024-08-12');
+  const [shows, setShows] = useState<Show[]>([]);
+
+  useEffect(() => {
+    const showsForDate = smallsData[selectedDate] || [];
+    setShows(showsForDate);
+  }, [selectedDate]);  
+ 
   const handleBack = () => {
     navigation.goBack();
   };
@@ -25,12 +42,15 @@ const SmallsScreen = () => {
       
       <DateSelector>
             <Ionicons name="chevron-back-outline" size={24} color={theme.colors.text.primary}/>
-            <DateText>{`Sunday, Aug 11`}</DateText>
+            <DateText>{selectedDate}</DateText>
             <Ionicons name="chevron-forward-outline" size={24} color={theme.colors.text.primary}/>
       </DateSelector>
-
-      <VenueText>5:30 PM (Doors 4:30PM)</VenueText>
-      <SubTitle>Philip Harper Quintet</SubTitle>
+      {shows.map((show, index) => (
+        <View key={index}>
+          <VenueText>{`${show.time} (Doors ${show.doorsOpen})`}</VenueText>
+          <SubTitle>{show.band}</SubTitle>
+        </View>
+      ))}
     </Container>
   )
 }

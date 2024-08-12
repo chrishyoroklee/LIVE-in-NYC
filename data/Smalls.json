@@ -1,0 +1,30 @@
+{
+    "2024-08-12": [
+        {
+            "id": "show1",
+            "time": "7:30 PM",
+            "doorsOpen": "7:00 PM",
+            "band": "Jason Tiemann Quartet"
+        },
+        {
+            "id": "show2",
+            "time": "9:00 PM",
+            "doorsOpen": "8:30 PM",
+            "band": "Jason Tiemann Quartet"
+        }
+    ],
+    "2024-08-13": [
+        {
+            "id": "show1",
+            "time": "7:30 PM",
+            "doorsOpen": "7:00 PM",
+            "band": "Steve Nelson Quartet"
+        },
+        {
+            "id": "show2",
+            "time": "9:00 PM",
+            "doorsOpen": "8:30 PM",
+            "band": "Steve Nelson Quartet"
+        }
+    ]
+}
