@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, Text, View, Touchable } from 'react-native';
+import { TouchableOpacity, Text, View, ScrollView} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/native';
@@ -21,7 +21,7 @@ export default function HomeScreen() {
   };
 
   const handleSmallsScreen = () => {
-    navigation.navigate('smalls');
+    navigation.navigate('venues/smalls');
   };
 
   const venues = [
@@ -69,10 +69,15 @@ export default function HomeScreen() {
 
         <Content contentContainerStyle={{ alignItems: 'center', paddingVertical: theme.spacing(5) }}>
             {venues.map((venue) => (
-            <VenueContainer key={venue}>
-                <Circle/>
-                <VenueText>{venue}</VenueText>
-            </VenueContainer>
+            <TouchableOpacity
+              key={venue}
+              onPress={venue ==='Smalls Jazz Club' ? handleSmallsScreen : () => {}}
+            >
+              <VenueContainer key={venue}>
+                  <Circle/>
+                  <VenueText>{venue}</VenueText>
+              </VenueContainer>
+            </TouchableOpacity>
             ))}
         </Content>
         </Container>
@@ -137,6 +142,7 @@ const Circle = styled(View)(({ theme }) => ({
 }));
 
 const VenueText = styled(Text)(({ theme }) => ({
+  flex: 1,
   fontSize: 16,
   color: theme.colors.buttonText.primary,
 }));

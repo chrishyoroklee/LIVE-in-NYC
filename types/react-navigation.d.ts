@@ -3,6 +3,8 @@ export type RootStackParamList = {
     settings: undefined;
     favorites: undefined;
     smalls: undefined;
+    'venues/smalls': undefined;
+    venue_details: undefined;
 }
 
 
