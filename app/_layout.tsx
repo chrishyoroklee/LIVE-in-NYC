@@ -40,9 +40,10 @@ export default function Layout() {
                       name={SCREENS.FAVORITES.name}
                       options={{ headerShown: true }} 
                     />
+
                     <Stack.Screen 
                       name={SCREENS.SMALLS.name}
-                      options={{ headerShown: true }} 
+                      options={{ headerShown: false }} 
                     />
                 </Stack>
             </NavigationThemeProvider>
