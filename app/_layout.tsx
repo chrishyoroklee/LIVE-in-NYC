@@ -21,15 +21,26 @@ export default function Layout() {
         <ThemesProvider>
             <NavigationThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
                 <Stack>
-                    {/* <Stack.Screen 
+                    <Stack.Screen 
                       name="index" 
                       options={{ headerShown: false }} 
-                    /> */}
+                    />
                     <Stack.Screen 
                       name={SCREENS.HOME.name} 
+                      options={{ headerShown: false }} 
+
                     />
                     <Stack.Screen 
                       name={SCREENS.SETTINGS.name}
+                      options={{ headerShown: true }} 
+                    />
+                    <Stack.Screen 
+                      name={SCREENS.FAVORITES.name}
+                      options={{ headerShown: true }} 
+                    />
+                    <Stack.Screen 
+                      name={SCREENS.SMALLS.name}
+                      options={{ headerShown: true }} 
                     />
                 </Stack>
             </NavigationThemeProvider>

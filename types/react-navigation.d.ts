@@ -2,6 +2,7 @@ export type RootStackParamList = {
     home: undefined;
     settings: undefined;
     favorites: undefined;
+    smalls: undefined;
 }
 
 

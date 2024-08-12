@@ -16,6 +16,14 @@ export default function HomeScreen() {
     navigation.navigate('settings');
   };
 
+  const handleFavoritesScreen = () => {
+    navigation.navigate('favorites');
+  };
+
+  const handleSmallsScreen = () => {
+    navigation.navigate('smalls');
+  };
+
   const venues = [
     'Bar Bayeux',
     'Bar LunAtico',
@@ -44,7 +52,7 @@ export default function HomeScreen() {
             <TouchableOpacity onPress={handleSettingsScreen}>
                 <Ionicons name="settings-outline" size={24} color={theme.colors.text.primary}/>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={handleFavoritesScreen}>
                 <Ionicons name="heart-outline" size={24} color={theme.colors.text.primary}/>
             </TouchableOpacity>
         </Header>
