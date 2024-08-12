@@ -19,7 +19,9 @@ const SmallsScreen = () => {
   const navigation = useNavigation();
   const theme = useTheme();
 
-  const [selectedDate, setSelectedDate] = useState<string>('2024-08-12');
+  const dates = Object.keys(smallsData);
+
+  const [selectedDate, setSelectedDate] = useState<string>(dates[0]);
   const [shows, setShows] = useState<Show[]>([]);
 
   useEffect(() => {
@@ -31,19 +33,40 @@ const SmallsScreen = () => {
     navigation.goBack();
   };
 
+  const handlePreviousDate = () => {
+    const currentIndex = dates.indexOf(selectedDate);
+    if (currentIndex > 0) {
+      setSelectedDate(dates[currentIndex - 1]);
+    }
+  };
+
+  const handleNextDate = () => {
+    const currentIndex = dates.indexOf(selectedDate);
+    if (currentIndex < dates.length - 1){
+      setSelectedDate(dates[currentIndex + 1]);
+    }
+  }
+
   return (
     <Container>
       <Header>
-        <TouchableOpacity onPress={handleBack}>
-          <VenueText>Back</VenueText>
-        </TouchableOpacity>
+        <Ionicons 
+          name="chevron-back-outline" 
+          size={24} 
+          color={theme.colors.text.primary} 
+          onPress={handleBack}
+        />
         <Title>smalls</Title>
       </Header>
       
       <DateSelector>
+        <TouchableOpacity onPress={handlePreviousDate}>
             <Ionicons name="chevron-back-outline" size={24} color={theme.colors.text.primary}/>
+        </TouchableOpacity>
             <DateText>{selectedDate}</DateText>
+        <TouchableOpacity onPress={handleNextDate}>
             <Ionicons name="chevron-forward-outline" size={24} color={theme.colors.text.primary}/>
+        </TouchableOpacity>
       </DateSelector>
       {shows.map((show, index) => (
         <View key={index}>
