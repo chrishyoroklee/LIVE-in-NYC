@@ -27,7 +27,10 @@ const SmallsScreen = () => {
             <Ionicons name="chevron-back-outline" size={24} color={theme.colors.text.primary}/>
             <DateText>{`Sunday, Aug 11`}</DateText>
             <Ionicons name="chevron-forward-outline" size={24} color={theme.colors.text.primary}/>
-        </DateSelector>
+      </DateSelector>
+
+      <VenueText>5:30 PM (Doors 4:30PM)</VenueText>
+      <SubTitle>Philip Harper Quintet</SubTitle>
     </Container>
   )
 }
@@ -52,6 +55,13 @@ const Title = styled(Text)(({ theme }) => ({
     color: theme.colors.text.primary,
     position: 'absolute',
     left: '50%',
+  }));
+
+  const SubTitle = styled(Text)(({ theme }) => ({
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: theme.colors.text.primary,
+    left: '5%',
   }));
 
 const DateSelector = styled(View)(({ theme }) => ({
@@ -80,14 +90,7 @@ const Circle = styled(View)(({ theme }) => ({
 
 const VenueText = styled(Text)(({ theme }) => ({
   fontSize: 16,
-  color: 'theme.colors.buttonText.primary',
+  color: theme.colors.buttonText.primary,
+  left: '5%',
 }));
 
-const VenueContainer = styled(View)(({ theme }) => ({
-  flexDirection: 'row',
-  alignItems: 'center',
-  width: '90%',
-  paddingVertical: theme.spacing(2),
-  borderBottomColor: theme.colors.border.primary,
-  borderBottomWidth: 1,
-}));
