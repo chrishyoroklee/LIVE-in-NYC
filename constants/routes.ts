@@ -1,5 +1,5 @@
 export const SCREENS = {
-    HOME: { name: 'Home', title: 'Home'},
-    SETTINGS: { name: 'Settings', title: 'Settings'},
-    FAVORITES: { name: 'Favorites', title: 'Favorites' },
+    HOME: { name: 'home', title: 'home'},
+    SETTINGS: { name: 'settings', title: 'settings'},
+    FAVORITES: { name: 'favorites', title: 'favorites' },
 };
