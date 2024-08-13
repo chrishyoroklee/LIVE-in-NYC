@@ -168,6 +168,7 @@ const DayCircle = styled(View)<DayCircleProps>(({ theme, isSelected }) => ({
   alignItems: 'center',
   marginHorizontal: 6,
   borderWidth: isSelected ? 1 : 0, 
+  borderColor: isSelected ? theme.colors.text.primary : undefined,
   marginRight: 8,
 }));
 
@@ -217,6 +218,7 @@ const VenueName = styled(Text)(({ theme }) => ({
   fontSize: 18,
   fontWeight: 'bold',
   marginBottom: theme.spacing(1),
+  color: theme.colors.text.primary,
 }));
 
 const EventDetails = styled(Text)(({ theme }) => ({

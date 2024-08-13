@@ -74,7 +74,7 @@ export default function HomeScreen() {
           />
         </DaySelector>
         <SeeAll onPress={handleDetailsScreen}>
-            <Text>See all {'>'}</Text>
+            <SeeAllText>See all {'>'}</SeeAllText>
         </SeeAll>
         
         <Content contentContainerStyle={{ alignItems: 'center', paddingVertical: theme.spacing(5) }}>
@@ -128,6 +128,7 @@ const DayCircle = styled(View)<DayCircleProps>(({ theme, isSelected }) => ({
   alignItems: 'center',
   marginHorizontal: 6,
   borderWidth: isSelected ? 1 : 0, 
+  borderColor: isSelected ? theme.colors.text.primary : undefined,
   marginRight: 8,
 }));
 
@@ -141,6 +142,12 @@ const SeeAll = styled(TouchableOpacity)(({ theme }) => ({
   alignItems: 'flex-end',
   paddingRight: theme.spacing(6),
   paddingTop: theme.spacing(4),
+}));
+
+const SeeAllText = styled(Text)(({ theme }) => ({
+  color: theme.colors.text.primary,
+  fontWeight: 'bold',
+  fontSize: 14,
 }));
 
 const Content = styled.ScrollView({
@@ -182,6 +189,7 @@ const VenueName = styled(Text)(({ theme }) => ({
   fontSize: 18,
   fontWeight: 'bold',
   marginBottom: theme.spacing(1),
+  color: theme.colors.text.primary,
 }));
 
 const EventDetails = styled(Text)(({ theme }) => ({
