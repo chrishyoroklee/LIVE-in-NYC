@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/native';
 import { Ionicons } from '@expo/vector-icons';
+import HeartCheckIcon from '@/components/icon/HeartCheckIcon';
 import SearchBar from '@/components/searchbar/SearchBar';
 import { useNavigation } from '@react-navigation/native';
 
@@ -50,7 +51,7 @@ export default function HomeScreen() {
                 <Ionicons name="settings-outline" size={24} color={theme.colors.text.primary}/>
             </TouchableOpacity>
             <TouchableOpacity onPress={handleFavoritesScreen}>
-                <Ionicons name="heart-outline" size={24} color={theme.colors.text.primary}/>
+                <HeartCheckIcon/>
             </TouchableOpacity>
         </Header>
 
@@ -108,7 +109,7 @@ const Title = styled(Text)(({ theme }) => ({
     fontWeight: 'bold',
     color: theme.colors.text.primary,
     marginBottom: theme.spacing(5),
-    marginLeft: theme.spacing(2),
+    marginLeft: theme.spacing(4),
   }));
 
 const DaySelector = styled(View)(({ theme }) => ({
