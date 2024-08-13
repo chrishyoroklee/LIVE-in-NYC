@@ -43,7 +43,6 @@ export default function HomeScreen() {
     },
   ];
 
-
   return (
     <Container>
         <Header>
