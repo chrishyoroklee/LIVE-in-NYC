@@ -8,7 +8,6 @@ export type RootStackParamList = {
     'venues/smalls': { selectedDate: string};
     'venues/stone': { selectedDate: string};
     'venues/villageVanguard': { selectedDate: string};
-    venue_details: undefined;
 }
 
 
