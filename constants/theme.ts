@@ -122,7 +122,7 @@ const LIGHT_THEME: Theme = {
       tertiary: '#FFFFFF',
     },
     border: {
-      primary: '#C6C6C8',
+      primary: '#000000',
     },
     navbar: {
       primary: '#FFFFFF',
