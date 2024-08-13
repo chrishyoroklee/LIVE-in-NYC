@@ -2,6 +2,7 @@ export type RootStackParamList = {
     home: undefined;
     settings: undefined;
     favorites: undefined;
+    details: undefined;
     'venues/blueNote': { selectedDate: string};
     'venues/jazzAtLincolnCenter': { selectedDate: string};
     'venues/mezzrow': { selectedDate: string};

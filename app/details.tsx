@@ -5,30 +5,62 @@ import { useTheme } from '@emotion/react';
 import styled from '@emotion/native';
 import { Ionicons } from '@expo/vector-icons';
 import HeartCheckIcon from '@/components/icon/HeartCheckIcon';
-import SearchBar from '@/components/searchbar/SearchBar';
 import { useNavigation } from '@react-navigation/native';
 
 interface DayCircleProps {
   isSelected: boolean;
 }
 
-export default function HomeScreen() {
+interface DayItem {
+    dayOfWeek: string;
+    day: number;
+  }
+
+export default function DetailsScreen() {
   const navigation = useNavigation();
   const theme = useTheme();
 
-  const days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-  const [selectedDay, setSelectedDay] = useState({ day: 'M', index: 1 });
+  const days: DayItem[] = [
+    { dayOfWeek: 'Thu', day: 1 },
+    { dayOfWeek: 'Fri', day: 2 },
+    { dayOfWeek: 'Sat', day: 3 },
+    { dayOfWeek: 'Sun', day: 4 },
+    { dayOfWeek: 'Mon', day: 5 },
+    { dayOfWeek: 'Tue', day: 6 },
+    { dayOfWeek: 'Wed', day: 7 },
+    { dayOfWeek: 'Thu', day: 8 },
+    { dayOfWeek: 'Fri', day: 9 },
+    { dayOfWeek: 'Sat', day: 10 },
+    { dayOfWeek: 'Sun', day: 11 },
+    { dayOfWeek: 'Mon', day: 12 },
+    { dayOfWeek: 'Tue', day: 13 },
+    { dayOfWeek: 'Wed', day: 14 },
+    { dayOfWeek: 'Thu', day: 16 },
+    { dayOfWeek: 'Fri', day: 17 },
+    { dayOfWeek: 'Sat', day: 18 },
+    { dayOfWeek: 'Sun', day: 19 },
+    { dayOfWeek: 'Mon', day: 20 },
+    { dayOfWeek: 'Tue', day: 21 },
+    { dayOfWeek: 'Wed', day: 22 },
+    { dayOfWeek: 'Thu', day: 23 },
+    { dayOfWeek: 'Fri', day: 24 },
+    { dayOfWeek: 'Sat', day: 25 },
+    { dayOfWeek: 'Sun', day: 26 },
+    { dayOfWeek: 'Mon', day: 27 },
+    { dayOfWeek: 'Tue', day: 28 },
+    { dayOfWeek: 'Wed', day: 29 },
+    { dayOfWeek: 'Thu', day: 30 },
+    { dayOfWeek: 'Fri', day: 31 },
+  ];
 
-  const handleSettingsScreen = () => {
-    navigation.navigate('settings');
-  };
+  const [selectedDay, setSelectedDay] = useState({ day: 31, index: 3 });
 
   const handleFavoritesScreen = () => {
     navigation.navigate('favorites');
   };
 
-  const handleDetailsScreen = () => {
-    navigation.navigate('details');
+  const handleBack = () => {
+    navigation.goBack();
   };
 
   const venues = [
@@ -47,35 +79,37 @@ export default function HomeScreen() {
   return (
     <Container>
         <Header>
-            <TouchableOpacity onPress={handleSettingsScreen}>
-                <Ionicons name="settings-outline" size={24} color={theme.colors.text.primary}/>
+            <TouchableOpacity>
+                <Ionicons 
+                    name="chevron-back-outline" 
+                    size={24} 
+                    color={theme.colors.text.primary} 
+                    onPress={handleBack}
+                />
             </TouchableOpacity>
+            <Title>Aug 2024</Title>
             <TouchableOpacity onPress={handleFavoritesScreen}>
                 <HeartCheckIcon/>
             </TouchableOpacity>
         </Header>
 
-        <Title>{`LIVE in NYC`}</Title>
-
-        <SearchBar placeholder="Musician, venue, or band name"/>
-
         <DaySelector>
           <FlatList
             horizontal
             data={days}
-            keyExtractor={(item, index) => `${item}-${index}`}
+            keyExtractor={(item, index) => `${item.dayOfWeek}-${item.day}-${index}`}
             renderItem={({ item, index }) => (
-              <TouchableOpacity onPress={() => setSelectedDay({ day: item, index})}>
-                <DayCircle isSelected={selectedDay.day === item && selectedDay.index === index}>
-                  <DayText>{item}</DayText>
-                </DayCircle>
+              <TouchableOpacity onPress={() => setSelectedDay({ day: item.day, index})}>
+                <View style={{ alignItems: 'center' }}>
+                    <DayOfWeekText>{item.dayOfWeek}</DayOfWeekText>
+                    <DayCircle isSelected={selectedDay.day === item.day && selectedDay.index === index}>
+                    <DayText>{item.day}</DayText>
+                    </DayCircle>
+                </View>
               </TouchableOpacity>
             )}
           />
         </DaySelector>
-        <SeeAll onPress={handleDetailsScreen}>
-            <Text>See all {'>'}</Text>
-        </SeeAll>
         
         <Content contentContainerStyle={{ alignItems: 'center', paddingVertical: theme.spacing(5) }}>
             {venues.map((venue) => (
@@ -120,6 +154,12 @@ const DaySelector = styled(View)(({ theme }) => ({
   paddingTop: theme.spacing(4),
 }));
 
+const DayOfWeekText = styled(Text)(({ theme }) => ({
+    color: theme.colors.text.primary,
+    fontSize: 14,
+    marginBottom: 4,
+  }));
+
 const DayCircle = styled(View)<DayCircleProps>(({ theme, isSelected }) => ({
   width: 40,
   height: 40,
@@ -137,11 +177,6 @@ const DayText = styled(Text)(({ theme }) => ({
   fontSize: 24,
 }));
 
-const SeeAll = styled(TouchableOpacity)(({ theme }) => ({
-  alignItems: 'flex-end',
-  paddingRight: theme.spacing(6),
-  paddingTop: theme.spacing(4),
-}));
 
 const Content = styled.ScrollView({
   flexGrow: 1,

@@ -41,7 +41,7 @@ export default function Layout() {
                       options={{ headerShown: true }} 
                     />
                     <Stack.Screen 
-                      name={SCREENS.SMALLS.name}
+                      name={SCREENS.DETAILS.name}
                       options={{ headerShown: false }} 
                     />
                     {/* <Stack.Screen 
