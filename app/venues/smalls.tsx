@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import styled from '@emotion/native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '@emotion/react'
 
@@ -17,11 +17,14 @@ const smallsData: Record<string, Show[]> = require('../../data/Smalls.json');
 
 const SmallsScreen = () => {
   const navigation = useNavigation();
+  const route = useRoute();
   const theme = useTheme();
+
+  const { selectedDate: initialSelectedDate } = route.params as { selectedDate: string };
 
   const dates = Object.keys(smallsData);
 
-  const [selectedDate, setSelectedDate] = useState<string>(dates[0]);
+  const [selectedDate, setSelectedDate] = useState<string>(initialSelectedDate);
   const [shows, setShows] = useState<Show[]>([]);
 
   useEffect(() => {

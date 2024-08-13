@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TouchableOpacity, Text, View, ScrollView} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTheme } from '@emotion/react';
@@ -6,11 +6,21 @@ import styled from '@emotion/native';
 import { Ionicons } from '@expo/vector-icons';
 import SearchBar from '@/components/searchbar/SearchBar';
 import { useNavigation } from '@react-navigation/native';
-
+import DateSelectorNav from '../components/selector/DateSelector'
 
 export default function HomeScreen() {
   const navigation = useNavigation();
   const theme = useTheme();
+
+  const dates = [
+    '2024-08-12',
+    '2024-08-13',
+    '2024-08-14',
+    '2024-08-15',
+    '2024-08-16',
+  ];
+
+  const [selectedDate, setSelectedDate] = useState<string>(dates[0]);
 
   const handleSettingsScreen = () => {
     navigation.navigate('settings');
@@ -21,29 +31,16 @@ export default function HomeScreen() {
   };
 
   const handleSmallsScreen = () => {
-    navigation.navigate('venues/smalls');
+    navigation.navigate('venues/smalls', { selectedDate });
   };
 
   const venues = [
-    'Bar Bayeux',
-    'Bar LunAtico',
-    'Birdland',
     'Blue Note NYC',
-    'Cellar Dog',
     'Jazz at Lincoln Center',
     'Mezzrow',
-    "Minton's Playhouse",
-    'Nublu',
-    'Ornithology Jazz Club',
-    'Room 623',
     'Smalls Jazz Club',
-    'Smoke Jazz Club',
-    'The Django',
-    'The Iridium',
-    'The Jazz Gallery',
     'The Stone',
     'The Village Vanguard',
-    'Zinc Bar',
   ];
 
   return (
@@ -61,17 +58,17 @@ export default function HomeScreen() {
 
         <SearchBar placeholder="Musician, venue, or band name"/>
 
-        <DateSelector>
-            <Ionicons name="chevron-back-outline" size={24} color={theme.colors.text.primary}/>
-            <DateText>{`Sunday, Aug 11`}</DateText>
-            <Ionicons name="chevron-forward-outline" size={24} color={theme.colors.text.primary}/>
-        </DateSelector>
+        <DateSelectorNav
+          selectedDate={selectedDate}
+          setSelectedDate={setSelectedDate}
+          dates={dates}
+        />
 
         <Content contentContainerStyle={{ alignItems: 'center', paddingVertical: theme.spacing(5) }}>
             {venues.map((venue) => (
             <TouchableOpacity
               key={venue}
-              onPress={venue ==='Smalls Jazz Club' ? handleSmallsScreen : () => {}}
+              onPress={venue === 'Smalls Jazz Club' ? handleSmallsScreen : () => {}}
             >
               <VenueContainer key={venue}>
                   <Circle/>
@@ -80,7 +77,7 @@ export default function HomeScreen() {
             </TouchableOpacity>
             ))}
         </Content>
-        </Container>
+    </Container>
   );
 }
 

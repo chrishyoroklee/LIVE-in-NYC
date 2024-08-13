@@ -1,0 +1,432 @@
+{
+    "2024-08-12": {
+        "Blue Note NYC": [
+            {
+                "id": "show1",
+                "time": "8:00 PM",
+                "doorsOpen": "6:00 PM",
+                "band": "PLUMB - David Murray/Questlove/Ray Angry"
+            },
+            {
+                "id": "show2",
+                "time": "10:30 PM",
+                "doorsOpen": "10:00 PM",
+                "band": "PLUMB - David Murray/Questlove/Ray Angry"
+            }
+        ],
+        "Jazz at Lincoln Center": [
+            {
+                "id": "show1",
+                "time": "7:00 PM",
+                "doorsOpen": "6:00 PM",
+                "band": "Jazz House KiDs by Christian McBride"
+            },
+            {
+                "id": "show2",
+                "time": "9:00 PM",
+                "doorsOpen": "8:30 PM",
+                "band": "Jazz House KiDs by Christian McBride"
+            }
+        ],
+        "Mezzrow": [
+            {
+                "id": "show1",
+                "time": "7:30 PM",
+                "doorsOpen": "7:00 PM",
+                "band": "Chris Pattishall"
+            },
+            {
+                "id": "show2",
+                "time": "9:00 PM",
+                "doorsOpen": "8:30 PM",
+                "band": "Chris Pattishall"
+            }
+        ],
+        "Smalls": [
+            {
+                "id": "show1",
+                "time": "7:30 PM",
+                "doorsOpen": "7:00 PM",
+                "band": "Jason Tiemann Quartet"
+            },
+            {
+                "id": "show2",
+                "time": "9:00 PM",
+                "doorsOpen": "8:30 PM",
+                "band": "Jason Tiemann Quartet"
+            }
+        ],
+        "The Stone": [
+            {
+                "id": "show1",
+                "time": "",
+                "doorsOpen": "",
+                "band": ""
+            },
+            {
+                "id": "show2",
+                "time": "",
+                "doorsOpen": "",
+                "band": ""
+            }
+        ],
+        "The Village Vanguard": [
+            {
+                "id": "show1",
+                "time": "8:00 PM",
+                "doorsOpen": "7:00 PM",
+                "band": "Vanguard Jazz Orchestra"
+            },
+            {
+                "id": "show2",
+                "time": "10:00 PM",
+                "doorsOpen": "9:30 PM",
+                "band": "Vanguard Jazz Orchestra"
+            }
+        ]
+    },
+    "2024-08-13": {
+        "Blue Note NYC": [
+            {
+                "id": "show1",
+                "time": "8:00 PM",
+                "doorsOpen": "6:00 PM",
+                "band": "PLUMB - David Murray/Questlove/Ray Angry"
+            },
+            {
+                "id": "show2",
+                "time": "10:30 PM",
+                "doorsOpen": "10:00 PM",
+                "band": "PLUMB - David Murray/Questlove/Ray Angry"
+            }
+        ],
+        "Jazz at Lincoln Center": [
+            {
+                "id": "show1",
+                "time": "7:00 PM",
+                "doorsOpen": "6:00 PM",
+                "band": "James Austin, Jr. 7 Luminescene"
+            },
+            {
+                "id": "show2",
+                "time": "9:00 PM",
+                "doorsOpen": "8:30 PM",
+                "band": "James Austin, Jr. 7 Luminescene"
+            }
+        ],
+        "Mezzrow": [
+            {
+                "id": "show1",
+                "time": "7:30 PM",
+                "doorsOpen": "7:00 PM",
+                "band": "Neal Kirkwood"
+            },
+            {
+                "id": "show2",
+                "time": "9:00 PM",
+                "doorsOpen": "8:30 PM",
+                "band": "Neal Kirkwood"
+            }
+        ],
+        "Smalls": [
+            {
+                "id": "show1",
+                "time": "7:30 PM",
+                "doorsOpen": "7:00 PM",
+                "band": "Steve Nelson Quartet"
+            },
+            {
+                "id": "show2",
+                "time": "9:00 PM",
+                "doorsOpen": "8:30 PM",
+                "band": "Steve Nelson Quartet"
+            }
+        ],
+        "The Stone": [
+            {
+                "id": "show1",
+                "time": "",
+                "doorsOpen": "",
+                "band": ""
+            },
+            {
+                "id": "show2",
+                "time": "",
+                "doorsOpen": "",
+                "band": ""
+            }
+        ],
+        "The Village Vanguard": [
+            {
+                "id": "show1",
+                "time": "8:00 PM",
+                "doorsOpen": "7:00 PM",
+                "band": "Bill Frisell"
+            },
+            {
+                "id": "show2",
+                "time": "10:00 PM",
+                "doorsOpen": "9:30 PM",
+                "band": "Bill Frisell"
+            }
+        ]
+    },
+    "2024-08-14": {
+        "Blue Note NYC": [
+            {
+                "id": "show1",
+                "time": "8:00 PM",
+                "doorsOpen": "6:00 PM",
+                "band": "PLUMB - David Murray/Questlove/Ray Angry"
+            },
+            {
+                "id": "show2",
+                "time": "10:30 PM",
+                "doorsOpen": "10:00 PM",
+                "band": "PLUMB - David Murray/Questlove/Ray Angry"
+            }
+        ],
+        "Jazz at Lincoln Center": [
+            {
+                "id": "show1",
+                "time": "7:00 PM",
+                "doorsOpen": "6:00 PM",
+                "band": "The Lost Melody Plays"
+            },
+            {
+                "id": "show2",
+                "time": "9:00 PM",
+                "doorsOpen": "8:30 PM",
+                "band": "The Lost Melody Plays"
+            }
+        ],
+        "Mezzrow": [
+            {
+                "id": "show1",
+                "time": "7:30 PM",
+                "doorsOpen": "7:00 PM",
+                "band": "Tim Collins"
+            },
+            {
+                "id": "show2",
+                "time": "9:00 PM",
+                "doorsOpen": "8:30 PM",
+                "band": "Tim Collins"
+            }
+        ],
+        "Smalls": [
+            {
+                "id": "show1",
+                "time": "7:30 PM",
+                "doorsOpen": "7:00 PM",
+                "band": "Tim Collins Quartet"
+            },
+            {
+                "id": "show2",
+                "time": "9:00 PM",
+                "doorsOpen": "8:30 PM",
+                "band": "Tim Collins Quartet"
+            }
+        ],
+        "The Stone": [
+            {
+                "id": "show1",
+                "time": "8:30 PM",
+                "doorsOpen": "8:00 PM",
+                "band": "Kevin Hays"
+            },
+            {
+                "id": "show2",
+                "time": "",
+                "doorsOpen": "",
+                "band": ""
+            }
+        ],
+        "The Village Vanguard": [
+            {
+                "id": "show1",
+                "time": "8:00 PM",
+                "doorsOpen": "7:00 PM",
+                "band": "Bill Frisell"
+            },
+            {
+                "id": "show2",
+                "time": "10:00 PM",
+                "doorsOpen": "9:30 PM",
+                "band": "Bill Frisell"
+            }
+        ]
+    },
+    "2024-08-15": {
+        "Blue Note NYC": [
+            {
+                "id": "show1",
+                "time": "8:00 PM",
+                "doorsOpen": "6:00 PM",
+                "band": "The Dirty Dozen Brass Band"
+            },
+            {
+                "id": "show2",
+                "time": "10:30 PM",
+                "doorsOpen": "10:00 PM",
+                "band": "The Dirty Dozen Brass Band"
+            }
+        ],
+        "Jazz at Lincoln Center": [
+            {
+                "id": "show1",
+                "time": "7:00 PM",
+                "doorsOpen": "6:00 PM",
+                "band": "Akira Tana's Osaka"
+            },
+            {
+                "id": "show2",
+                "time": "9:00 PM",
+                "doorsOpen": "8:30 PM",
+                "band": "The Lost Melody Plays"
+            }
+        ],
+        "Mezzrow": [
+            {
+                "id": "show1",
+                "time": "7:30 PM",
+                "doorsOpen": "7:00 PM",
+                "band": "Art Hirahara"
+            },
+            {
+                "id": "show2",
+                "time": "9:00 PM",
+                "doorsOpen": "8:30 PM",
+                "band": "Art Hirahara"
+            }
+        ],
+        "Smalls": [
+            {
+                "id": "show1",
+                "time": "7:30 PM",
+                "doorsOpen": "7:00 PM",
+                "band": "Adam Kolker Quartet"
+            },
+            {
+                "id": "show2",
+                "time": "9:00 PM",
+                "doorsOpen": "8:30 PM",
+                "band": "Adam Kolker Quartet"
+            }
+        ],
+        "The Stone": [
+            {
+                "id": "show1",
+                "time": "8:30 PM",
+                "doorsOpen": "8:00 PM",
+                "band": "Kevin Hays"
+            },
+            {
+                "id": "show2",
+                "time": "",
+                "doorsOpen": "",
+                "band": ""
+            }
+        ],
+        "The Village Vanguard": [
+            {
+                "id": "show1",
+                "time": "8:00 PM",
+                "doorsOpen": "7:00 PM",
+                "band": "Bill Frisell"
+            },
+            {
+                "id": "show2",
+                "time": "10:00 PM",
+                "doorsOpen": "9:30 PM",
+                "band": "Bill Frisell"
+            }
+        ]
+    },
+    "2024-08-16": {
+        "Blue Note NYC": [
+            {
+                "id": "show1",
+                "time": "8:00 PM",
+                "doorsOpen": "6:00 PM",
+                "band": "The Dirty Dozen Brass Band"
+            },
+            {
+                "id": "show2",
+                "time": "10:30 PM",
+                "doorsOpen": "10:00 PM",
+                "band": "The Dirty Dozen Brass Band"
+            }
+        ],
+        "Jazz at Lincoln Center": [
+            {
+                "id": "show1",
+                "time": "7:00 PM",
+                "doorsOpen": "6:00 PM",
+                "band": "Akira Tana's Osaka"
+            },
+            {
+                "id": "show2",
+                "time": "9:00 PM",
+                "doorsOpen": "8:30 PM",
+                "band": "The Lost Melody Plays"
+            }
+        ],
+        "Mezzrow": [
+            {
+                "id": "show1",
+                "time": "7:30 PM",
+                "doorsOpen": "7:00 PM",
+                "band": "Art Hirahara"
+            },
+            {
+                "id": "show2",
+                "time": "9:00 PM",
+                "doorsOpen": "8:30 PM",
+                "band": "Art Hirahara"
+            }
+        ],
+        "Smalls": [
+            {
+                "id": "show1",
+                "time": "6:00 PM",
+                "doorsOpen": "5:00 PM",
+                "band": "Dave Scott Quartet"
+            },
+            {
+                "id": "show2",
+                "time": "7:30 PM",
+                "doorsOpen": "7:00 PM",
+                "band": "Dave Scott Quartet"
+            }
+        ],
+        "The Stone": [
+            {
+                "id": "show1",
+                "time": "8:30 PM",
+                "doorsOpen": "8:00 PM",
+                "band": "Kevin Hays"
+            },
+            {
+                "id": "show2",
+                "time": "",
+                "doorsOpen": "",
+                "band": ""
+            }
+        ],
+        "The Village Vanguard": [
+            {
+                "id": "show1",
+                "time": "8:00 PM",
+                "doorsOpen": "7:00 PM",
+                "band": "Bill Frisell"
+            },
+            {
+                "id": "show2",
+                "time": "10:00 PM",
+                "doorsOpen": "9:30 PM",
+                "band": "Bill Frisell"
+            }
+        ]
+    }
+}
