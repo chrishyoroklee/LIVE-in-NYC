@@ -121,23 +121,25 @@ const DaySelector = styled(View)(({ theme }) => ({
 }));
 
 const DayCircle = styled(View)<DayCircleProps>(({ theme, isSelected }) => ({
-  width: 52,
-  height: 33,
-  borderRadius: 15,
-  backgroundColor: isSelected ? theme.colors.button.primary : undefined,
+  width: 40,
+  height: 40,
+  borderRadius: 20,
   justifyContent: 'center',
   alignItems: 'center',
+  marginHorizontal: 6,
+  borderWidth: isSelected ? 1 : 0, 
+  marginRight: 8,
 }));
 
 const DayText = styled(Text)(({ theme }) => ({
   color: theme.colors.text.primary,
   fontWeight: 'bold',
-  fontSize: 20,
+  fontSize: 24,
 }));
 
 const SeeAll = styled(TouchableOpacity)(({ theme }) => ({
   alignItems: 'flex-end',
-  padding: theme.spacing(2),
+  paddingRight: theme.spacing(6),
   paddingTop: theme.spacing(4),
 }));
 
