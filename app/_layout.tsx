@@ -44,6 +44,10 @@ export default function Layout() {
                       name={SCREENS.DETAILS.name}
                       options={{ headerShown: false }} 
                     />
+                    <Stack.Screen 
+                      name={SCREENS.SMALLS.name}
+                      options={{ headerShown: false }} 
+                    />
                     {/* <Stack.Screen 
                       name={SCREENS.BLUE_NOTE_NYC.name}
                       options={{ headerShown: false }} 

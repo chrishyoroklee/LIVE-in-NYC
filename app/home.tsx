@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TouchableOpacity, Text, View, ScrollView, FlatList} from 'react-native';
+import { TouchableOpacity, Text, View, ScrollView, FlatList, Touchable} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/native';
@@ -36,11 +36,13 @@ export default function HomeScreen() {
       name: 'Smalls',
       event: 'Livestream, J',
       time: '5:30 PM (Doors 4:30PM)',
+      screen: 'smalls',
     },
     {
       name: 'Birdland',
       event: 'Livestream, A',
       time: '5:30 PM (Doors 4:30PM)',
+      // screen: 'birdland',
     },
   ];
 
@@ -79,14 +81,20 @@ export default function HomeScreen() {
         
         <Content contentContainerStyle={{ alignItems: 'center', paddingVertical: theme.spacing(5) }}>
             {venues.map((venue) => (
-              <VenueCardContainer key={venue.name}>
-                <VenueCard/ >
-                <TextContainer>
-                  <VenueName>{venue.name}</VenueName>
-                  <EventDetails>{venue.event}</EventDetails>
-                  <TimeDetails>{venue.time}</TimeDetails>
-                </TextContainer>
-              </VenueCardContainer>
+              <TouchableOpacity
+                key={venue.name}
+                onPress={() => navigation.navigate('smalls')}
+                style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '90%', alignSelf: 'flex-start' }}
+              >
+                <VenueCardContainer key={venue.name}>
+                  <VenueCard/ >
+                  <TextContainer>
+                    <VenueName>{venue.name}</VenueName>
+                    <EventDetails>{venue.event}</EventDetails>
+                    <TimeDetails>{venue.time}</TimeDetails>
+                  </TextContainer>
+                </VenueCardContainer>
+              </TouchableOpacity>
             ))}
         </Content>
     </Container>
