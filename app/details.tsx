@@ -6,6 +6,7 @@ import styled from '@emotion/native';
 import { Ionicons } from '@expo/vector-icons';
 import HeartCheckIcon from '@/components/icon/HeartCheckIcon';
 import { useNavigation } from '@react-navigation/native';
+import DateTimePicker from 'react-native-modal-datetime-picker';
 
 interface DayCircleProps {
   isSelected: boolean;
@@ -54,6 +55,7 @@ export default function DetailsScreen() {
   ];
 
   const [selectedDay, setSelectedDay] = useState({ day: 31, index: 3 });
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
   const handleFavoritesScreen = () => {
     navigation.navigate('favorites');
@@ -76,6 +78,19 @@ export default function DetailsScreen() {
     },
   ];
 
+  const showDatePicker = () => {
+    setDatePickerVisibility(true);
+  }
+
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
+  }
+
+  const handleConfirm = (date: Date) => {
+    console.log('Date picker: ' + date);
+    hideDatePicker();
+  }
+
   return (
     <Container>
         <Header>
@@ -87,7 +102,15 @@ export default function DetailsScreen() {
                     onPress={handleBack}
                 />
             </TouchableOpacity>
-            <Title>Aug 2024</Title>
+            <TouchableOpacity onPress={showDatePicker} style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <Title>Aug 2024</Title>
+                <Ionicons
+                    name="chevron-down-outline"
+                    size={13}
+                    color={theme.colors.text.primary}
+                    style={{ marginLeft: theme.spacing(1) }}
+                />
+            </TouchableOpacity>
             <TouchableOpacity onPress={handleFavoritesScreen}>
                 <HeartCheckIcon/>
             </TouchableOpacity>
@@ -123,6 +146,13 @@ export default function DetailsScreen() {
               </VenueCardContainer>
             ))}
         </Content>
+
+        <DateTimePicker
+            isVisible={isDatePickerVisible}
+            mode="date"
+            onConfirm={handleConfirm}
+            onCancel={hideDatePicker}
+        />
     </Container>
   );
 }
