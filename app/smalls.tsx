@@ -40,7 +40,7 @@ export default function DetailsScreen() {
                 />
             </TouchableOpacity>
            
-            <Title>Aug 2024</Title>
+            <Title>Monday, Aug 12</Title>
 
             <TouchableOpacity onPress={handleFavoritesScreen}>
                 <HeartCheckIcon/>
@@ -49,16 +49,40 @@ export default function DetailsScreen() {
 
         
         <Content contentContainerStyle={{ alignItems: 'center', paddingVertical: theme.spacing(5) }}>
+            <VenueCardContainer>
+                <VenueCard/ >
+            </VenueCardContainer>
             {venues.map((venue) => (
               <VenueCardContainer key={venue.name}>
-                <VenueCard/ >
                 <TextContainer>
-                  <VenueName>{venue.name}</VenueName>
-                  <EventDetails>{venue.event}</EventDetails>
-                  <TimeDetails>{venue.time}</TimeDetails>
+                    <VenueName>{venue.name}</VenueName>
+                    <EventDetails>{venue.event}</EventDetails>
+                    <TimeDetails>{venue.time}</TimeDetails>
                 </TextContainer>
               </VenueCardContainer>
             ))}
+            <TicketContainer>
+                <TouchableOpacity>
+                    <View style={{ flexDirection: 'row', alignItems: 'center'}}>
+                        <Ionicons name="location-outline" size={30} color={theme.colors.text.primary}/>
+                        <EventDetails>  183 W 10th St, New York, NY 10014</EventDetails>
+                    </View>
+                </TouchableOpacity>
+            </TicketContainer>
+            <LocationContainer>
+                <TouchableOpacity>
+                    <View style={{ flexDirection: 'row', alignItems: 'center'}}>
+                        <Ionicons 
+                            name="ticket-outline" 
+                            size={30} 
+                            color={theme.colors.text.primary}
+                            style={{ transform: [{ rotate: '45deg'}]}}
+                        />
+                        <EventDetails>  Ticket</EventDetails>
+                    </View>
+                </TouchableOpacity>
+            </LocationContainer>
+
         </Content>
     </Container>
   );
@@ -104,20 +128,35 @@ const VenueCard = styled(View)(({ theme }) => ({
   borderRadius: 10,
   padding: theme.spacing(2),
   marginBottom: theme.spacing(3),
-  marginLeft: theme.spacing(8),
+  marginLeft: theme.spacing(5),
   borderColor: theme.colors.border.primary,
   borderWidth: 1,
-  height: 80,  
-  width: '40%',
-  alignSelf: 'flex-start', 
+  height: 150,  
+  width: '100%',
 }));
 
 const TextContainer = styled(View)(({ theme }) => ({
   flexDirection: 'column',  
   justifyContent: 'center',  
-  paddingLeft: theme.spacing(4),  
+  paddingLeft: theme.spacing(9),  
   width: '100%',  
 }));
+
+const TicketContainer = styled(View)(({ theme }) => ({
+    flexDirection: 'column',  
+    justifyContent: 'center',  
+    paddingLeft: theme.spacing(8),  
+    paddingTop: theme.spacing(4),
+    width: '100%',  
+  }));
+
+const LocationContainer = styled(View)(({ theme }) => ({
+    flexDirection: 'column',  
+    justifyContent: 'center',  
+    paddingLeft: theme.spacing(8),  
+    paddingTop: theme.spacing(4),
+    width: '100%',  
+  }));
 
 const VenueName = styled(Text)(({ theme }) => ({
   fontSize: 18,
