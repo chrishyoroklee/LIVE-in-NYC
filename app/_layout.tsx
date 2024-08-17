@@ -38,7 +38,7 @@ export default function Layout() {
                     />
                     <Stack.Screen 
                       name={SCREENS.FAVORITES.name}
-                      options={{ headerShown: true }} 
+                      options={{ headerShown: false }} 
                     />
                     <Stack.Screen 
                       name={SCREENS.DETAILS.name}

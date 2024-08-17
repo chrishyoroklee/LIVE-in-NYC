@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { TouchableOpacity, Text, View, ScrollView, FlatList} from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import { TouchableOpacity, Text, View, FlatList} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/native';
@@ -20,49 +20,66 @@ interface DayItem {
 export default function DetailsScreen() {
   const navigation = useNavigation();
   const theme = useTheme();
+  const flatListRef = useRef<FlatList>(null);
 
-  const days: DayItem[] = [
-    { dayOfWeek: 'Thu', day: 1 },
-    { dayOfWeek: 'Fri', day: 2 },
-    { dayOfWeek: 'Sat', day: 3 },
-    { dayOfWeek: 'Sun', day: 4 },
-    { dayOfWeek: 'Mon', day: 5 },
-    { dayOfWeek: 'Tue', day: 6 },
-    { dayOfWeek: 'Wed', day: 7 },
-    { dayOfWeek: 'Thu', day: 8 },
-    { dayOfWeek: 'Fri', day: 9 },
-    { dayOfWeek: 'Sat', day: 10 },
-    { dayOfWeek: 'Sun', day: 11 },
-    { dayOfWeek: 'Mon', day: 12 },
-    { dayOfWeek: 'Tue', day: 13 },
-    { dayOfWeek: 'Wed', day: 14 },
-    { dayOfWeek: 'Thu', day: 16 },
-    { dayOfWeek: 'Fri', day: 17 },
-    { dayOfWeek: 'Sat', day: 18 },
-    { dayOfWeek: 'Sun', day: 19 },
-    { dayOfWeek: 'Mon', day: 20 },
-    { dayOfWeek: 'Tue', day: 21 },
-    { dayOfWeek: 'Wed', day: 22 },
-    { dayOfWeek: 'Thu', day: 23 },
-    { dayOfWeek: 'Fri', day: 24 },
-    { dayOfWeek: 'Sat', day: 25 },
-    { dayOfWeek: 'Sun', day: 26 },
-    { dayOfWeek: 'Mon', day: 27 },
-    { dayOfWeek: 'Tue', day: 28 },
-    { dayOfWeek: 'Wed', day: 29 },
-    { dayOfWeek: 'Thu', day: 30 },
-    { dayOfWeek: 'Fri', day: 31 },
-  ];
+  const today = new Date();
+  const currentMonth = today.toLocaleString('en-US', { month: 'long'});
+  const currentYear = today.getFullYear();
 
-  const [selectedDay, setSelectedDay] = useState({ day: 31, index: 3 });
+  const [selectedDay, setSelectedDay] = useState<{ day: number, index: number}>({ day: 17, index: 16 });
+  const [days, setDays] = useState<DayItem[]>([]);
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+
+  const generateDaysArray = (month: number, year: number) => {
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const daysArray: DayItem[] = [];
+
+    for (let day = 1; day <= daysInMonth; day++){
+      const date = new Date(year, month, day);
+      const dayOfWeek = date.toLocaleString('en-US', { weekday: 'short' });
+      daysArray.push({ dayOfWeek, day});
+    }
+
+    return daysArray;
+  };
+
+  useEffect(() => {
+    const today = new Date();
+    const month = today.getMonth();
+    const year = today.getFullYear();
+    const currentDay = today.getDate();
+
+    const generatedDays = generateDaysArray(month, year);
+    setDays(generatedDays);
+
+    const todayIndex = generatedDays.findIndex((d) => d.day === currentDay);
+    setSelectedDay({ day: currentDay, index: todayIndex})
+
+    setTimeout(() => {
+      const offset = (todayIndex - 2) * 52;
+      flatListRef.current?.scrollToOffset({ offset, animated: true });
+    }, 0);
+  }, []);
+
+  const handleDateChange = (date: Date) => {
+    const month = date.getMonth();
+    const year = date.getFullYear();
+    const selectedDay = date.getDate();
+
+    const generatedDays = generateDaysArray(month, year);
+    setDays(generatedDays);
+
+    const dayIndex = generatedDays.findIndex((d) => d.day === selectedDay);
+    setSelectedDay({ day: selectedDay, index: dayIndex })
+
+    setTimeout(() => {
+      const offset = (dayIndex - 2) * 52;
+      flatListRef.current?.scrollToOffset({ offset, animated: true });
+    }, 0);
+  }
 
   const handleFavoritesScreen = () => {
     navigation.navigate('favorites');
-  };
-
-  const handleBack = () => {
-    navigation.goBack();
   };
 
   const venues = [
@@ -87,23 +104,18 @@ export default function DetailsScreen() {
   }
 
   const handleConfirm = (date: Date) => {
-    console.log('Date picker: ' + date);
+    handleDateChange(date);
     hideDatePicker();
   }
 
   return (
     <Container>
         <Header>
-            <TouchableOpacity>
-                <Ionicons 
-                    name="chevron-back-outline" 
-                    size={24} 
-                    color={theme.colors.text.primary} 
-                    onPress={handleBack}
-                />
+            <TouchableOpacity onPress={navigation.goBack}>
+              <Ionicons name="chevron-back-outline" size={24} color={theme.colors.text.primary}/>
             </TouchableOpacity>
             <TouchableOpacity onPress={showDatePicker} style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <Title>Aug 2024</Title>
+                <Title>{`${currentMonth} ${currentYear}`}</Title>
                 <Ionicons
                     name="chevron-down-outline"
                     size={13}
@@ -117,21 +129,31 @@ export default function DetailsScreen() {
         </Header>
 
         <DaySelector>
-          <FlatList
-            horizontal
-            data={days}
-            keyExtractor={(item, index) => `${item.dayOfWeek}-${item.day}-${index}`}
-            renderItem={({ item, index }) => (
-              <TouchableOpacity onPress={() => setSelectedDay({ day: item.day, index})}>
-                <View style={{ alignItems: 'center' }}>
-                    <DayOfWeekText>{item.dayOfWeek}</DayOfWeekText>
-                    <DayCircle isSelected={selectedDay.day === item.day && selectedDay.index === index}>
-                    <DayText>{item.day}</DayText>
-                    </DayCircle>
-                </View>
-              </TouchableOpacity>
-            )}
-          />
+        <FlatList
+          ref={flatListRef} // Reference to FlatList
+          horizontal
+          data={days}
+          keyExtractor={(item) => `${item.dayOfWeek}-${item.day}`}
+          renderItem={({ item, index }) => (
+            <TouchableOpacity onPress={() => setSelectedDay({ day: item.day, index })}>
+              <View style={{ alignItems: 'center' }}>
+                <DayOfWeekText>{item.dayOfWeek}</DayOfWeekText>
+                <DayCircle isSelected={selectedDay.day === item.day && selectedDay.index === index}>
+                  <DayText>{item.day}</DayText>
+                </DayCircle>
+              </View>
+            </TouchableOpacity>
+          )}
+          getItemLayout={(data, index) => (
+            { length: 52, offset: 52 * index, index }
+          )}
+          onScrollToIndexFailed={(info) => {
+            const wait = new Promise(resolve => setTimeout(resolve, 500));
+            wait.then(() => {
+              flatListRef.current?.scrollToIndex({ index: info.index, animated: true });
+            });
+          }}
+        />
         </DaySelector>
         
         <Content contentContainerStyle={{ alignItems: 'center', paddingVertical: theme.spacing(5) }}>

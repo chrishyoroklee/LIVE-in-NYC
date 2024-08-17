@@ -17,7 +17,8 @@ export default function HomeScreen() {
   const theme = useTheme();
 
   const days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-  const [selectedDay, setSelectedDay] = useState({ day: 'M', index: 1 });
+  const currentDayIndex = new Date().getDay();
+  const [selectedDay, setSelectedDay] = useState({ day: days[currentDayIndex], index: currentDayIndex });
 
   const handleSettingsScreen = () => {
     navigation.navigate('settings');
