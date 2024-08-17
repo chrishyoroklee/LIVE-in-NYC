@@ -58,7 +58,7 @@ export default function HomeScreen() {
             </TouchableOpacity>
         </Header>
 
-        <Title>{`LIVE NYC`}</Title>
+        {/* <Title>{`LIVE NYC`}</Title> */}
 
         <SearchBar placeholder="Musician, venue, or band name"/>
 
