@@ -4,11 +4,6 @@ export const SCREENS = {
     FAVORITES: { name: 'favorites', title: 'Favorites' },
     DETAILS: { name: 'details', title: 'Details' },
     LOADING_SCREEN: { name: 'loadingScreen', title: 'Loading Screen'},
-    SMALLS: { name: 'smalls', title: 'Smalls'},
-    BLUE_NOTE_NYC: { name: 'venues/blueNote', title: 'Blue Note NYC'},
-    JAZZ_AT_LINCOLN_CENTER: { name: 'venues/jazzAtLincolnCenter', title: 'Jazz at Lincoln Center'},
-    MEZZROW: { name: 'venues/mezzrow', title: 'Mezzrow'},
-    THE_STONE: { name: 'venues/stone', title: 'The Stone'},
-    THE_VILLAGE_VANGUARD: { name: 'venues/villageVanguard', title: 'The Village Vanguard'},
+    EVENT: { name: 'event', title: 'event'},
     VENUE_DETAILS: { name: 'venueDetails', title: 'Venue Details'},
 };

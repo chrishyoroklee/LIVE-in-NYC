@@ -8,7 +8,7 @@ import HeartCheckIcon from '@/components/icon/HeartCheckIcon';
 import { useNavigation } from '@react-navigation/native';
 
 
-export default function DetailsScreen() {
+export default function EventScreen() {
   const navigation = useNavigation();
   const theme = useTheme();
 

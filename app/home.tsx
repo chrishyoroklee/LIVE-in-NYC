@@ -122,11 +122,11 @@ export default function HomeScreen() {
         <Content contentContainerStyle={{ alignItems: 'center', paddingVertical: theme.spacing(5) }}>
             {shows.map(({ venue, shows }) => (
               <View key={venue} style={{ width: '100%' }}>
-                <Text style={{ fontWeight: 'bold', fontSize: 18, marginLeft: 20 }}>{venue}</Text>
+                <Text style={{ fontWeight: 'bold', fontSize: 18, marginLeft: 35 }}>{venue}</Text>
                 {shows.map(show => (
                   <TouchableOpacity
                     key={show.id}
-                    onPress={() => navigation.navigate('smalls')}
+                    onPress={() => navigation.navigate('event')}
                     style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '90%', alignSelf: 'flex-start' }}
                   >
                     <VenueCardContainer>

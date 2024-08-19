@@ -49,29 +49,9 @@ export default function Layout() {
                       options={{ headerShown: false }} 
                     />
                     <Stack.Screen 
-                      name={SCREENS.SMALLS.name}
+                      name={SCREENS.EVENT.name}
                       options={{ headerShown: false }} 
                     />
-                    {/* <Stack.Screen 
-                      name={SCREENS.BLUE_NOTE_NYC.name}
-                      options={{ headerShown: false }} 
-                    />
-                    <Stack.Screen 
-                      name={SCREENS.JAZZ_AT_LINCOLN_CENTER.name}
-                      options={{ headerShown: false }} 
-                    />
-                    <Stack.Screen 
-                      name={SCREENS.MEZZROW.name}
-                      options={{ headerShown: false }} 
-                    />
-                    <Stack.Screen 
-                      name={SCREENS.THE_STONE.name}
-                      options={{ headerShown: false }} 
-                    />
-                    <Stack.Screen 
-                      name={SCREENS.THE_VILLAGE_VANGUARD.name}
-                      options={{ headerShown: false }} 
-                    /> */}
                 </Stack>
             </NavigationThemeProvider>
         </ThemesProvider>
