@@ -3,6 +3,7 @@ export const SCREENS = {
     SETTINGS: { name: 'settings', title: 'Settings'},
     FAVORITES: { name: 'favorites', title: 'Favorites' },
     DETAILS: { name: 'details', title: 'Details' },
+    LOADING_SCREEN: { name: 'loadingScreen', title: 'Loading Screen'},
     SMALLS: { name: 'smalls', title: 'Smalls'},
     BLUE_NOTE_NYC: { name: 'venues/blueNote', title: 'Blue Note NYC'},
     JAZZ_AT_LINCOLN_CENTER: { name: 'venues/jazzAtLincolnCenter', title: 'Jazz at Lincoln Center'},

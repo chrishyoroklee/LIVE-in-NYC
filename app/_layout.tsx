@@ -28,6 +28,10 @@ export default function Layout() {
                       options={{ headerShown: false }} 
                     />
                     <Stack.Screen 
+                      name="loadingScreen" 
+                      options={{ headerShown: false }} 
+                    />
+                    <Stack.Screen 
                       name={SCREENS.HOME.name} 
                       options={{ headerShown: false }} 
 

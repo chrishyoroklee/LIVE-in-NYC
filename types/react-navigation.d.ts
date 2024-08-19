@@ -3,6 +3,7 @@ export type RootStackParamList = {
     settings: undefined;
     favorites: undefined;
     details: undefined;
+    loadingScreen: undefined;
     smalls: undefined;
     'venues/blueNote': { selectedDate: string};
     'venues/jazzAtLincolnCenter': { selectedDate: string};

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TouchableOpacity, Text, View, ScrollView, FlatList, Touchable} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTheme } from '@emotion/react';
@@ -7,6 +7,23 @@ import { Ionicons } from '@expo/vector-icons';
 import HeartCheckIcon from '@/components/icon/HeartCheckIcon';
 import SearchBar from '@/components/searchbar/SearchBar';
 import { useNavigation } from '@react-navigation/native';
+import LoadingScreen from './loadingScreen'; 
+import jazzData from '../data/JazzData.json';
+
+interface Show {
+  id: string;
+  time: string;
+  doorsOpen: string;
+  band: string;
+}
+
+interface VenueShows {
+  [venue: string]: Show[];
+}
+
+interface Schedule {
+  [date: string]: VenueShows;
+}
 
 interface DayCircleProps {
   isSelected: boolean;
@@ -16,9 +33,38 @@ export default function HomeScreen() {
   const navigation = useNavigation();
   const theme = useTheme();
 
+  const [isLoading, setIsLoading] = useState(true); // State to manage loading
   const days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
   const currentDayIndex = new Date().getDay();
-  const [selectedDay, setSelectedDay] = useState({ day: days[currentDayIndex], index: currentDayIndex });
+  const [selectedDay, setSelectedDay] = useState(new Date());
+
+  const [shows, setShows] = useState<{ venue: string; shows: Show[] }[]>([]);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false); 
+    }, 3000);
+  }, []);
+
+  useEffect(() => {
+    const formattedDate = `${selectedDay.getFullYear()}-${String(selectedDay.getMonth() + 1).padStart(2, '0')}-${String(selectedDay.getDate()).padStart(2, '0')}`;
+    const dayShows = jazzData[formattedDate as keyof typeof jazzData];
+    
+    if (dayShows) {
+      const venuesWithShows = Object.entries(dayShows).map(([venue, shows]) => {
+        return { venue, shows };
+      });
+      setShows(venuesWithShows);
+    } else {
+      setShows([]); // Set to empty array if no shows found for the selected date
+    }
+  }, [selectedDay]);
+
+  const handleDayChange = (dayIndex: number) => {
+    const date = new Date();
+    const todayIndex = date.getDay();
+    const selectedDate = new Date(date.setDate(date.getDate() + (dayIndex - todayIndex)));
+    setSelectedDay(selectedDate);
+  };
 
   const handleSettingsScreen = () => {
     navigation.navigate('settings');
@@ -32,20 +78,9 @@ export default function HomeScreen() {
     navigation.navigate('details');
   };
 
-  const venues = [
-    {
-      name: 'Smalls',
-      event: 'Livestream, J',
-      time: '5:30 PM (Doors 4:30PM)',
-      screen: 'smalls',
-    },
-    {
-      name: 'Birdland',
-      event: 'Livestream, A',
-      time: '5:30 PM (Doors 4:30PM)',
-      // screen: 'birdland',
-    },
-  ];
+  const handleLoadingScreen = () => {
+    navigation.navigate('loadingScreen');
+  };
 
   return (
     <Container>
@@ -60,16 +95,20 @@ export default function HomeScreen() {
 
         {/* <Title>{`LIVE NYC`}</Title> */}
 
-        <SearchBar placeholder="Musician, venue, or band name"/>
+        <SearchBar placeholder="Artists, venues, and events"/>
 
+        {/* <TouchableOpacity onPress={handleLoadingScreen} style={{ marginTop: 20, marginBottom: 20 }}>
+            <Text>Go to Loading Screen</Text>
+        </TouchableOpacity> */}
+        
         <DaySelector>
           <FlatList
             horizontal
             data={days}
             keyExtractor={(item, index) => `${item}-${index}`}
             renderItem={({ item, index }) => (
-              <TouchableOpacity onPress={() => setSelectedDay({ day: item, index})}>
-                <DayCircle isSelected={selectedDay.day === item && selectedDay.index === index}>
+              <TouchableOpacity onPress={() => handleDayChange(index)}>
+                <DayCircle isSelected={selectedDay.getDay() === index}>
                   <DayText>{item}</DayText>
                 </DayCircle>
               </TouchableOpacity>
@@ -81,21 +120,26 @@ export default function HomeScreen() {
         </SeeAll>
         
         <Content contentContainerStyle={{ alignItems: 'center', paddingVertical: theme.spacing(5) }}>
-            {venues.map((venue) => (
-              <TouchableOpacity
-                key={venue.name}
-                onPress={() => navigation.navigate('smalls')}
-                style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '90%', alignSelf: 'flex-start' }}
-              >
-                <VenueCardContainer key={venue.name}>
-                  <VenueCard/ >
-                  <TextContainer>
-                    <VenueName>{venue.name}</VenueName>
-                    <EventDetails>{venue.event}</EventDetails>
-                    <TimeDetails>{venue.time}</TimeDetails>
-                  </TextContainer>
-                </VenueCardContainer>
-              </TouchableOpacity>
+            {shows.map(({ venue, shows }) => (
+              <View key={venue} style={{ width: '100%' }}>
+                <Text style={{ fontWeight: 'bold', fontSize: 18, marginLeft: 20 }}>{venue}</Text>
+                {shows.map(show => (
+                  <TouchableOpacity
+                    key={show.id}
+                    onPress={() => navigation.navigate('smalls')}
+                    style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '90%', alignSelf: 'flex-start' }}
+                  >
+                    <VenueCardContainer>
+                      <VenueCard/ >
+                      <TextContainer>
+                        <VenueName>{show.band}</VenueName>
+                        <EventDetails>{show.time}</EventDetails>
+                        <TimeDetails>{`Doors Open: ${show.doorsOpen}`}</TimeDetails>
+                      </TextContainer>
+                    </VenueCardContainer>
+                  </TouchableOpacity>
+                ))}
+              </View>
             ))}
         </Content>
     </Container>
@@ -191,7 +235,7 @@ const TextContainer = styled(View)(({ theme }) => ({
   flexDirection: 'column',  
   justifyContent: 'center',  
   paddingLeft: theme.spacing(4),  
-  width: '100%',  
+  width: '70%',  
 }));
 
 const VenueName = styled(Text)(({ theme }) => ({
@@ -199,6 +243,8 @@ const VenueName = styled(Text)(({ theme }) => ({
   fontWeight: 'bold',
   marginBottom: theme.spacing(1),
   color: theme.colors.text.primary,
+  flexWrap: 'wrap',
+  width: '100%'
 }));
 
 const EventDetails = styled(Text)(({ theme }) => ({
