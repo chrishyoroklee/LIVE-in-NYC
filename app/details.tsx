@@ -7,6 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 import HeartCheckIcon from '@/components/icon/HeartCheckIcon';
 import { useNavigation } from '@react-navigation/native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
+import jazzData from '../data/JazzData.json';
 
 interface DayCircleProps {
   isSelected: boolean;
@@ -17,6 +18,17 @@ interface DayItem {
     day: number;
   }
 
+interface Show {
+  id: string;
+  time: string;
+  doorsOpen: string;
+  band: string;
+}
+
+interface VenueShows {
+  [venue: string]: Show[];
+}
+
 export default function DetailsScreen() {
   const navigation = useNavigation();
   const theme = useTheme();
@@ -26,8 +38,9 @@ export default function DetailsScreen() {
   const currentMonth = today.toLocaleString('en-US', { month: 'long'});
   const currentYear = today.getFullYear();
 
-  const [selectedDay, setSelectedDay] = useState<{ day: number, index: number}>({ day: 17, index: 16 });
+  const [selectedDay, setSelectedDay] = useState<Date>(today);
   const [days, setDays] = useState<DayItem[]>([]);
+  const [shows, setShows] = useState<{ venue: string; shows: Show[] }[]>([]);
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
   const generateDaysArray = (month: number, year: number) => {
@@ -44,7 +57,6 @@ export default function DetailsScreen() {
   };
 
   useEffect(() => {
-    const today = new Date();
     const month = today.getMonth();
     const year = today.getFullYear();
     const currentDay = today.getDate();
@@ -53,7 +65,7 @@ export default function DetailsScreen() {
     setDays(generatedDays);
 
     const todayIndex = generatedDays.findIndex((d) => d.day === currentDay);
-    setSelectedDay({ day: currentDay, index: todayIndex})
+    setSelectedDay(today)
 
     setTimeout(() => {
       const offset = (todayIndex - 2) * 52;
@@ -61,22 +73,24 @@ export default function DetailsScreen() {
     }, 0);
   }, []);
 
+  useEffect(() => {
+    const formattedDate = `${selectedDay.getFullYear()}-${String(selectedDay.getMonth() + 1).padStart(2, '0')}-${String(selectedDay.getDate()).padStart(2, '0')}`;
+    const dayShows = jazzData[formattedDate as keyof typeof jazzData];
+
+    if (dayShows) {
+      const venuesWithShows = Object.entries(dayShows).map(([venue, shows]) => {
+        return { venue, shows };
+      });
+      setShows(venuesWithShows);
+    } else {
+      setShows([]); 
+    }
+  }, [selectedDay]);
+
   const handleDateChange = (date: Date) => {
-    const month = date.getMonth();
-    const year = date.getFullYear();
-    const selectedDay = date.getDate();
+    setSelectedDay(date); // Update the selected day to the chosen date
+  };
 
-    const generatedDays = generateDaysArray(month, year);
-    setDays(generatedDays);
-
-    const dayIndex = generatedDays.findIndex((d) => d.day === selectedDay);
-    setSelectedDay({ day: selectedDay, index: dayIndex })
-
-    setTimeout(() => {
-      const offset = (dayIndex - 2) * 52;
-      flatListRef.current?.scrollToOffset({ offset, animated: true });
-    }, 0);
-  }
 
   const handleFavoritesScreen = () => {
     navigation.navigate('favorites');
@@ -135,10 +149,10 @@ export default function DetailsScreen() {
           data={days}
           keyExtractor={(item) => `${item.dayOfWeek}-${item.day}`}
           renderItem={({ item, index }) => (
-            <TouchableOpacity onPress={() => setSelectedDay({ day: item.day, index })}>
+            <TouchableOpacity onPress={() => handleDateChange(new Date(today.getFullYear(), today.getMonth(), item.day))}>
               <View style={{ alignItems: 'center' }}>
                 <DayOfWeekText>{item.dayOfWeek}</DayOfWeekText>
-                <DayCircle isSelected={selectedDay.day === item.day && selectedDay.index === index}>
+                <DayCircle isSelected={selectedDay.getDate() === item.day}>
                   <DayText>{item.day}</DayText>
                 </DayCircle>
               </View>
@@ -157,17 +171,22 @@ export default function DetailsScreen() {
         </DaySelector>
         
         <Content contentContainerStyle={{ alignItems: 'center', paddingVertical: theme.spacing(5) }}>
-            {venues.map((venue) => (
-              <VenueCardContainer key={venue.name}>
-                <VenueCard/ >
+        {shows.map(({ venue, shows }) => (
+          <View key={venue} style={{ width: '100%' }}>
+            <Text style={{ fontWeight: 'bold', fontSize: 18, marginLeft: 20 }}>{venue}</Text>
+            {shows.map(show => (
+              <VenueCardContainer key={show.id}>
+                <VenueCard />
                 <TextContainer>
-                  <VenueName>{venue.name}</VenueName>
-                  <EventDetails>{venue.event}</EventDetails>
-                  <TimeDetails>{venue.time}</TimeDetails>
+                  <VenueName>{show.band}</VenueName>
+                  <EventDetails>{show.time}</EventDetails>
+                  <TimeDetails>{`Doors Open: ${show.doorsOpen}`}</TimeDetails>
                 </TextContainer>
               </VenueCardContainer>
             ))}
-        </Content>
+          </View>
+        ))}
+      </Content>
 
         <DateTimePicker
             isVisible={isDatePickerVisible}
@@ -263,7 +282,7 @@ const TextContainer = styled(View)(({ theme }) => ({
   flexDirection: 'column',  
   justifyContent: 'center',  
   paddingLeft: theme.spacing(4),  
-  width: '100%',  
+  width: '65%',  
 }));
 
 const VenueName = styled(Text)(({ theme }) => ({
@@ -271,15 +290,19 @@ const VenueName = styled(Text)(({ theme }) => ({
   fontWeight: 'bold',
   marginBottom: theme.spacing(1),
   color: theme.colors.text.primary,
+  flexWrap: 'wrap',
+  flexShrink: 1,
 }));
 
 const EventDetails = styled(Text)(({ theme }) => ({
   fontSize: 16,
   color: theme.colors.text.secondary,
   marginBottom: theme.spacing(1),
+  flexWrap: 'wrap',
 }));
 
 const TimeDetails = styled(Text)(({ theme }) => ({
   fontSize: 14,
   color: theme.colors.text.secondary,
+  flexWrap: 'wrap',
 }));
