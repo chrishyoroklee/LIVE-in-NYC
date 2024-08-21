@@ -25,10 +25,6 @@ interface Show {
   band: string;
 }
 
-interface VenueShows {
-  [venue: string]: Show[];
-}
-
 export default function DetailsScreen() {
   const navigation = useNavigation();
   const theme = useTheme();
@@ -183,7 +179,7 @@ export default function DetailsScreen() {
                     <VenueName>{venue}</VenueName>
                   </VenueCard>
                   <TextContainer>
-                    <VenueName>{show.band}</VenueName>
+                    <BandName>{show.band}</BandName>
                     <EventDetails>{show.time}</EventDetails>
                     <TimeDetails>{`Doors Open: ${show.doorsOpen}`}</TimeDetails>
                   </TextContainer>

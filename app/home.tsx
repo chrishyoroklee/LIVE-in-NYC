@@ -7,7 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 import HeartCheckIcon from '@/components/icon/HeartCheckIcon';
 import SearchBar from '@/components/searchbar/SearchBar';
 import { useNavigation } from '@react-navigation/native';
-import LoadingScreen from './loadingScreen'; 
+// import LoadingScreen from './loadingScreen'; 
 import jazzData from '../data/JazzData.json';
 
 interface Show {
@@ -55,7 +55,7 @@ export default function HomeScreen() {
       });
       setShows(venuesWithShows);
     } else {
-      setShows([]); // Set to empty array if no shows found for the selected date
+      setShows([]); 
     }
   }, [selectedDay]);
 
@@ -64,7 +64,7 @@ export default function HomeScreen() {
     const todayIndex = date.getDay();
     const diff = dayIndex - todayIndex;
     const selectedDate = new Date(date);
-    selectedDate.setDate(date.getDate() + diff); // Ensure correct date is set
+    selectedDate.setDate(date.getDate() + diff);
     setSelectedDay(selectedDate);
   };
 
@@ -169,14 +169,6 @@ const Header = styled(View)(({ theme }) => ({
     justifyContent: 'space-between',
     padding: theme.spacing(4),
 }));
-
-const Title = styled(Text)(({ theme }) => ({
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: theme.colors.text.primary,
-    marginBottom: theme.spacing(5),
-    marginLeft: theme.spacing(4),
-  }));
 
 const DaySelector = styled(View)(({ theme }) => ({
   flexDirection: 'row',
