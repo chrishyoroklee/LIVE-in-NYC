@@ -82,14 +82,14 @@ const LIGHT_THEME: Theme = {
       primary: '#FFFFFF',
     },
     button: {
-      primary: '#9300b0',
+      primary: '#9966CC',
       secondary: '#F0F0F0',
       tertiary: '#7676801F',
       disabled: 'rgba(0, 0, 0, 0.4)',
       system: '#0A84FF',
     },
     buttonText: {
-      primary: '#9300b0',
+      primary: '#9966CC',
       secondary: '#FFFFFF',
       link: '#262626',
       system: '#0A84FF',
@@ -108,7 +108,7 @@ const LIGHT_THEME: Theme = {
       value: '#262626',
     },
     icon: {
-      primary: '#9300b0',
+      primary: '#9966CC',
       secondary: '#262626',
       tertiary: '#FFFFFF',
     },
@@ -117,7 +117,7 @@ const LIGHT_THEME: Theme = {
       secondary: '#F0F0F0',
     },
     card: {
-      primary: '#9300b0',
+      primary: '#9966CC',
       secondary: '#E9E9EB',
       tertiary: '#FFFFFF',
     },

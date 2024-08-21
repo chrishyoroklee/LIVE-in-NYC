@@ -4,7 +4,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/native';
 import { Ionicons } from '@expo/vector-icons';
-import HeartCheckIcon from '@/components/icon/HeartCheckIcon';
 import { useNavigation } from '@react-navigation/native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import jazzData from '../data/JazzData.json';
@@ -122,7 +121,7 @@ export default function DetailsScreen() {
                 />
             </TouchableOpacity>
             <TouchableOpacity onPress={handleFavoritesScreen}>
-                <HeartCheckIcon/>
+              <Ionicons name="heart-outline" size={24} color={theme.colors.button.primary} />
             </TouchableOpacity>
         </Header>
 

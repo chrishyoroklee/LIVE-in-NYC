@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { TouchableOpacity, Text, View, ScrollView, FlatList, Touchable} from 'react-native';
+import { TouchableOpacity, Text, View, ScrollView, FlatList, Image} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/native';
 import { Ionicons } from '@expo/vector-icons';
-import HeartCheckIcon from '@/components/icon/HeartCheckIcon';
 import SearchBar from '@/components/searchbar/SearchBar';
 import { useNavigation } from '@react-navigation/native';
 // import LoadingScreen from './loadingScreen'; 
@@ -93,10 +92,17 @@ export default function HomeScreen() {
                 <Ionicons name="settings-outline" size={24} color={theme.colors.text.primary}/>
             </TouchableOpacity>
             <TouchableOpacity onPress={handleFavoritesScreen}>
-                <HeartCheckIcon/>
+                <Ionicons name="heart-outline" size={24} color={theme.colors.button.primary} />
             </TouchableOpacity>
         </Header>
 
+        <ImageContainer>
+          <Image 
+            source={require('../assets/images/logo.png')}
+            style={{ width: 150, height: 100 }}
+            resizeMode="contain"
+          />
+        </ImageContainer>
 
         <SearchBar placeholder="Artists, venues, and events"/>
 
@@ -164,6 +170,13 @@ const Container = styled(SafeAreaView)(({ theme }) => ({
   backgroundColor: theme.colors.background.screen,
 }));
 
+const ImageContainer = styled(SafeAreaView)(({ theme }) => ({
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center',
+  paddingTop: theme.spacing(-12),
+}));
+
 const Header = styled(View)(({ theme }) => ({
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -203,7 +216,7 @@ const SeeAll = styled(TouchableOpacity)(({ theme }) => ({
 }));
 
 const SeeAllText = styled(Text)(({ theme }) => ({
-  color: theme.colors.text.primary,
+  color: theme.colors.button.primary,
   fontWeight: 'bold',
   fontSize: 16,
 }));
@@ -271,3 +284,5 @@ const TimeDetails = styled(Text)(({ theme }) => ({
   fontSize: 14,
   color: theme.colors.text.secondary,
 }));
+
+
