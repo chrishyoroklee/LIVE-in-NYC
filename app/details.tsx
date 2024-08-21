@@ -173,10 +173,11 @@ export default function DetailsScreen() {
         <Content contentContainerStyle={{ alignItems: 'center', paddingVertical: theme.spacing(5) }}>
         {shows.map(({ venue, shows }) => (
           <View key={venue} style={{ width: '100%' }}>
-            <Text style={{ fontWeight: 'bold', fontSize: 18, marginLeft: 35}}>{venue}</Text>
             {shows.map(show => (
               <VenueCardContainer key={show.id}>
-                <VenueCard />
+                <VenueCard>
+                  <VenueName>{venue}</VenueName>
+                </VenueCard>
                 <TextContainer>
                   <VenueName>{show.band}</VenueName>
                   <EventDetails>{show.time}</EventDetails>
@@ -286,12 +287,21 @@ const TextContainer = styled(View)(({ theme }) => ({
 }));
 
 const VenueName = styled(Text)(({ theme }) => ({
-  fontSize: 18,
+  fontSize: 15,
   fontWeight: 'bold',
   marginBottom: theme.spacing(1),
   color: theme.colors.text.primary,
   flexWrap: 'wrap',
-  flexShrink: 1,
+  width: '100%'
+}));
+
+const BandName = styled(Text)(({ theme }) => ({
+  fontSize: 16,
+  fontWeight: 'bold',
+  marginBottom: theme.spacing(1),
+  color: theme.colors.text.primary,
+  flexWrap: 'wrap',
+  width: '100%'
 }));
 
 const EventDetails = styled(Text)(({ theme }) => ({
