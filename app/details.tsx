@@ -174,16 +174,31 @@ export default function DetailsScreen() {
         {shows.map(({ venue, shows }) => (
           <View key={venue} style={{ width: '100%' }}>
             {shows.map(show => (
-              <VenueCardContainer key={show.id}>
-                <VenueCard>
-                  <VenueName>{venue}</VenueName>
-                </VenueCard>
-                <TextContainer>
-                  <VenueName>{show.band}</VenueName>
-                  <EventDetails>{show.time}</EventDetails>
-                  <TimeDetails>{`Doors Open: ${show.doorsOpen}`}</TimeDetails>
-                </TextContainer>
-              </VenueCardContainer>
+              <TouchableOpacity
+              key={show.id}
+              onPress={() => navigation.navigate('event', {
+                venue: venue,
+                date: selectedDay
+              })}
+              style={{ 
+                flexDirection: 'row', 
+                alignItems: 'center', 
+                justifyContent: 'space-between', 
+                width: '90%', 
+                alignSelf: 'flex-start' 
+              }}              
+              >
+                <VenueCardContainer key={show.id}>
+                  <VenueCard>
+                    <VenueName>{venue}</VenueName>
+                  </VenueCard>
+                  <TextContainer>
+                    <VenueName>{show.band}</VenueName>
+                    <EventDetails>{show.time}</EventDetails>
+                    <TimeDetails>{`Doors Open: ${show.doorsOpen}`}</TimeDetails>
+                  </TextContainer>
+                </VenueCardContainer>
+              </TouchableOpacity>
             ))}
           </View>
         ))}

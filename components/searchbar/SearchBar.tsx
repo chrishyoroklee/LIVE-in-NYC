@@ -33,7 +33,7 @@ const SearchBarContainer = styled(View)(({ theme }) => ({
     alignItems: 'center',
     borderColor: theme.colors.border.primary,
     borderWidth: 1,
-    borderRadius: 8,
+    borderRadius: 20,
     paddingHorizontal: theme.spacing(3),
     paddingVertical: theme.spacing(2),
     marginBottom: theme.spacing(3),

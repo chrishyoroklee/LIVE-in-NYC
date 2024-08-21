@@ -129,7 +129,13 @@ export default function HomeScreen() {
                       venue: venue,
                       date: selectedDay
                     })}
-                    style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '90%', alignSelf: 'flex-start' }}
+                    style={{ 
+                      flexDirection: 'row', 
+                      alignItems: 'center', 
+                      justifyContent: 'space-between', 
+                      width: '90%', 
+                      alignSelf: 'flex-start' 
+                    }}
                   >
                     <VenueCardContainer>
                       <VenueCard>
@@ -204,7 +210,7 @@ const SeeAll = styled(TouchableOpacity)(({ theme }) => ({
 const SeeAllText = styled(Text)(({ theme }) => ({
   color: theme.colors.text.primary,
   fontWeight: 'bold',
-  fontSize: 14,
+  fontSize: 16,
 }));
 
 const Content = styled.ScrollView({
