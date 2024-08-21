@@ -16,6 +16,7 @@ const settingsOptions = [
   { id: '3', title: 'Restore Purchases', action: () => console.log('Restore Purchases Pressed') },
   { id: '4', title: 'Restore Default Venue Order', action: () => console.log('Restore Default Venue Order Pressed') },
   { id: '5', title: 'Contact', action: () => console.log('Contact Pressed') },
+  { id: '6', title: 'Provide Feedback', action: () => console.log('Provide Feedback Pressed') },
 ];
 
 const SettingsScreen = () => {
