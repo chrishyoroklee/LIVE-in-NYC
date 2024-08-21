@@ -126,7 +126,10 @@ export default function HomeScreen() {
                 {shows.map(show => (
                   <TouchableOpacity
                     key={show.id}
-                    onPress={() => navigation.navigate('event')}
+                    onPress={() => navigation.navigate('event', {
+                      venue: venue,
+                      date: selectedDay
+                    })}
                     style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '90%', alignSelf: 'flex-start' }}
                   >
                     <VenueCardContainer>

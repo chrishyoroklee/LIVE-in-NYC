@@ -5,12 +5,15 @@ import { useTheme } from '@emotion/react';
 import styled from '@emotion/native';
 import { Ionicons } from '@expo/vector-icons';
 import HeartCheckIcon from '@/components/icon/HeartCheckIcon';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 
 export default function EventScreen() {
   const navigation = useNavigation();
   const theme = useTheme();
+  const route = useRoute();
+
+  const { venue, date } = route.params as { venue: string; date: Date };
 
   const handleFavoritesScreen = () => {
     navigation.navigate('favorites');
@@ -27,7 +30,12 @@ export default function EventScreen() {
       time: '5:30 PM (Doors 4:30PM)',
     },
   ];
-
+  const displayDate = date.toLocaleDateString('en-US', { 
+    weekday: 'long', 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
   return (
     <Container>
         <Header>
@@ -40,7 +48,7 @@ export default function EventScreen() {
                 />
             </TouchableOpacity>
            
-            <Title>Monday, Aug 12</Title>
+            <Title>{displayDate}</Title>
 
             <TouchableOpacity onPress={handleFavoritesScreen}>
                 <HeartCheckIcon/>

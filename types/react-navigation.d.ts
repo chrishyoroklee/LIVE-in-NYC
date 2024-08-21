@@ -4,7 +4,7 @@ export type RootStackParamList = {
     favorites: undefined;
     details: undefined;
     loadingScreen: undefined;
-    event: undefined;
+    event: { venue: string; date: Date };
     'venues/blueNote': { selectedDate: string};
     'venues/jazzAtLincolnCenter': { selectedDate: string};
     'venues/mezzrow': { selectedDate: string};
