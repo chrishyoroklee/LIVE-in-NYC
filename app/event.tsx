@@ -6,7 +6,22 @@ import styled from '@emotion/native';
 import { Ionicons } from '@expo/vector-icons';
 import HeartCheckIcon from '@/components/icon/HeartCheckIcon';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import jazzData from '../data/JazzData.json';
 
+type Event = {
+  id: string;
+  time: string;
+  doorsOpen: string;
+  band: string;
+};
+
+type VenueEvents = {
+  [venueName: string]: Event[];
+};
+
+type JazzData = {
+  [date: string]: VenueEvents;
+};
 
 export default function EventScreen() {
   const navigation = useNavigation();
@@ -30,12 +45,21 @@ export default function EventScreen() {
       time: '5:30 PM (Doors 4:30PM)',
     },
   ];
+
+  // Format the date to match the keys in your jazzData JSON
+  const formattedDate = date.toISOString().split('T')[0];
+
+  // Retrieve the events for the selected date and venue
+  const venueEvents = (jazzData as JazzData)[formattedDate]?.[venue] || [];
+
   const displayDate = date.toLocaleDateString('en-US', { 
     weekday: 'long', 
     year: 'numeric', 
     month: 'long', 
     day: 'numeric' 
   });
+
+
   return (
     <Container>
         <Header>
@@ -58,17 +82,24 @@ export default function EventScreen() {
         
         <Content contentContainerStyle={{ alignItems: 'center', paddingVertical: theme.spacing(5) }}>
             <VenueCardContainer>
-                <VenueCard/ >
+                <VenueCard>
+                  <VenueName>{venue}</VenueName>
+                </VenueCard>
             </VenueCardContainer>
-            {venues.map((venue) => (
-              <VenueCardContainer key={venue.name}>
+
+            {venueEvents.length > 0 ? (
+              venueEvents.map((event, index) => (
+              <VenueCardContainer key={index}>
                 <TextContainer>
-                    <VenueName>{venue.name}</VenueName>
-                    <EventDetails>{venue.event}</EventDetails>
-                    <TimeDetails>{venue.time}</TimeDetails>
+                    <BandName>{event.band}</BandName>
+                    <EventDetails>{event.time}</EventDetails>
+                    <TimeDetails>{`Doors Open: ${event.doorsOpen}`}</TimeDetails>
                 </TextContainer>
               </VenueCardContainer>
-            ))}
+              ))
+            ) : (
+              <Text>No events found for this venue and date.</Text>
+            )}
             <TicketContainer>
                 <TouchableOpacity>
                     <View style={{ flexDirection: 'row', alignItems: 'center'}}>
@@ -132,6 +163,7 @@ const VenueCardContainer = styled(View)(({ theme }) => ({
 const VenueCard = styled(View)(({ theme }) => ({
   flexDirection: 'row',  
   alignItems: 'center',
+  justifyContent: 'center',
   backgroundColor: theme.colors.background.screen,
   borderRadius: 10,
   padding: theme.spacing(2),
@@ -167,6 +199,13 @@ const LocationContainer = styled(View)(({ theme }) => ({
   }));
 
 const VenueName = styled(Text)(({ theme }) => ({
+  fontSize: 18,
+  fontWeight: 'bold',
+  marginBottom: theme.spacing(1),
+  color: theme.colors.text.primary,
+}));
+
+const BandName = styled(Text)(({ theme }) => ({
   fontSize: 18,
   fontWeight: 'bold',
   marginBottom: theme.spacing(1),
