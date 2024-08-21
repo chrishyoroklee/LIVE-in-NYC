@@ -5,13 +5,15 @@
                 "id": "show1",
                 "time": "8:00 PM",
                 "doorsOpen": "6:00 PM",
-                "band": "PLUMB - David Murray/Questlove/Ray Angry"
+                "band": "PLUMB - David Murray/Questlove/Ray Angry",
+                "category": "Music"
             },
             {
                 "id": "show2",
                 "time": "10:30 PM",
                 "doorsOpen": "10:00 PM",
-                "band": "PLUMB - David Murray/Questlove/Ray Angry"
+                "band": "PLUMB - David Murray/Questlove/Ray Angry",
+                "category": "Music"
             }
         ],
         "Jazz at Lincoln Center": [
@@ -19,13 +21,15 @@
                 "id": "show1",
                 "time": "7:00 PM",
                 "doorsOpen": "6:00 PM",
-                "band": "Jazz House KiDs by Christian McBride"
+                "band": "Jazz House KiDs by Christian McBride",
+                "category": "Music"
             },
             {
                 "id": "show2",
                 "time": "9:00 PM",
                 "doorsOpen": "8:30 PM",
-                "band": "Jazz House KiDs by Christian McBride"
+                "band": "Jazz House KiDs by Christian McBride",
+                "category": "Music"
             }
         ],
         "Mezzrow": [
@@ -33,13 +37,15 @@
                 "id": "show1",
                 "time": "7:30 PM",
                 "doorsOpen": "7:00 PM",
-                "band": "Chris Pattishall"
+                "band": "Chris Pattishall",
+                "category": "Music"
             },
             {
                 "id": "show2",
                 "time": "9:00 PM",
                 "doorsOpen": "8:30 PM",
-                "band": "Chris Pattishall"
+                "band": "Chris Pattishall",
+                "category": "Music"
             }
         ],
         "Smalls": [
@@ -47,13 +53,15 @@
                 "id": "show1",
                 "time": "7:30 PM",
                 "doorsOpen": "7:00 PM",
-                "band": "Jason Tiemann Quartet"
+                "band": "Jason Tiemann Quartet",
+                "category": "Music"
             },
             {
                 "id": "show2",
                 "time": "9:00 PM",
                 "doorsOpen": "8:30 PM",
-                "band": "Jason Tiemann Quartet"
+                "band": "Jason Tiemann Quartet",
+                "category": "Music"
             }
         ],
         "The Stone": [
@@ -61,13 +69,15 @@
                 "id": "show1",
                 "time": "",
                 "doorsOpen": "",
-                "band": ""
+                "band": "",
+                "category": "Music"
             },
             {
                 "id": "show2",
                 "time": "",
                 "doorsOpen": "",
-                "band": ""
+                "band": "",
+                "category": "Music"
             }
         ],
         "The Village Vanguard": [
@@ -75,13 +85,15 @@
                 "id": "show1",
                 "time": "8:00 PM",
                 "doorsOpen": "7:00 PM",
-                "band": "Vanguard Jazz Orchestra"
+                "band": "Vanguard Jazz Orchestra",
+                "category": "Music"
             },
             {
                 "id": "show2",
                 "time": "10:00 PM",
                 "doorsOpen": "9:30 PM",
-                "band": "Vanguard Jazz Orchestra"
+                "band": "Vanguard Jazz Orchestra",
+                "category": "Music"
             }
         ]
     },
@@ -91,13 +103,15 @@
                 "id": "show1",
                 "time": "8:00 PM",
                 "doorsOpen": "6:00 PM",
-                "band": "PLUMB - David Murray/Questlove/Ray Angry"
+                "band": "PLUMB - David Murray/Questlove/Ray Angry",
+                "category": "Music"
             },
             {
                 "id": "show2",
                 "time": "10:30 PM",
                 "doorsOpen": "10:00 PM",
-                "band": "PLUMB - David Murray/Questlove/Ray Angry"
+                "band": "PLUMB - David Murray/Questlove/Ray Angry",
+                "category": "Music"
             }
         ],
         "Jazz at Lincoln Center": [
@@ -105,13 +119,15 @@
                 "id": "show1",
                 "time": "7:00 PM",
                 "doorsOpen": "6:00 PM",
-                "band": "James Austin, Jr. 7 Luminescene"
+                "band": "James Austin, Jr. 7 Luminescene",
+                "category": "Music"
             },
             {
                 "id": "show2",
                 "time": "9:00 PM",
                 "doorsOpen": "8:30 PM",
-                "band": "James Austin, Jr. 7 Luminescene"
+                "band": "James Austin, Jr. 7 Luminescene",
+                "category": "Music"
             }
         ],
         "Mezzrow": [
@@ -119,13 +135,15 @@
                 "id": "show1",
                 "time": "7:30 PM",
                 "doorsOpen": "7:00 PM",
-                "band": "Neal Kirkwood"
+                "band": "Neal Kirkwood",
+                "category": "Music"
             },
             {
                 "id": "show2",
                 "time": "9:00 PM",
                 "doorsOpen": "8:30 PM",
-                "band": "Neal Kirkwood"
+                "band": "Neal Kirkwood",
+                "category": "Music"
             }
         ],
         "Smalls": [
@@ -133,13 +151,15 @@
                 "id": "show1",
                 "time": "7:30 PM",
                 "doorsOpen": "7:00 PM",
-                "band": "Steve Nelson Quartet"
+                "band": "Steve Nelson Quartet",
+                "category": "Music"
             },
             {
                 "id": "show2",
                 "time": "9:00 PM",
                 "doorsOpen": "8:30 PM",
-                "band": "Steve Nelson Quartet"
+                "band": "Steve Nelson Quartet",
+                "category": "Music"
             }
         ],
         "The Stone": [
@@ -147,13 +167,15 @@
                 "id": "show1",
                 "time": "",
                 "doorsOpen": "",
-                "band": ""
+                "band": "",
+                "category": "Music"
             },
             {
                 "id": "show2",
                 "time": "",
                 "doorsOpen": "",
-                "band": ""
+                "band": "",
+                "category": "Music"
             }
         ],
         "The Village Vanguard": [
@@ -161,13 +183,15 @@
                 "id": "show1",
                 "time": "8:00 PM",
                 "doorsOpen": "7:00 PM",
-                "band": "Bill Frisell"
+                "band": "Bill Frisell",
+                "category": "Music"
             },
             {
                 "id": "show2",
                 "time": "10:00 PM",
                 "doorsOpen": "9:30 PM",
-                "band": "Bill Frisell"
+                "band": "Bill Frisell",
+                "category": "Music"
             }
         ]
     },
@@ -177,13 +201,15 @@
                 "id": "show1",
                 "time": "8:00 PM",
                 "doorsOpen": "6:00 PM",
-                "band": "PLUMB - David Murray/Questlove/Ray Angry"
+                "band": "PLUMB - David Murray/Questlove/Ray Angry",
+                "category": "Music"
             },
             {
                 "id": "show2",
                 "time": "10:30 PM",
                 "doorsOpen": "10:00 PM",
-                "band": "PLUMB - David Murray/Questlove/Ray Angry"
+                "band": "PLUMB - David Murray/Questlove/Ray Angry",
+                "category": "Music"
             }
         ],
         "Jazz at Lincoln Center": [
@@ -191,13 +217,15 @@
                 "id": "show1",
                 "time": "7:00 PM",
                 "doorsOpen": "6:00 PM",
-                "band": "The Lost Melody Plays"
+                "band": "The Lost Melody Plays",
+                "category": "Music"
             },
             {
                 "id": "show2",
                 "time": "9:00 PM",
                 "doorsOpen": "8:30 PM",
-                "band": "The Lost Melody Plays"
+                "band": "The Lost Melody Plays",
+                "category": "Music"
             }
         ],
         "Mezzrow": [
@@ -205,13 +233,15 @@
                 "id": "show1",
                 "time": "7:30 PM",
                 "doorsOpen": "7:00 PM",
-                "band": "Tim Collins"
+                "band": "Tim Collins",
+                "category": "Music"
             },
             {
                 "id": "show2",
                 "time": "9:00 PM",
                 "doorsOpen": "8:30 PM",
-                "band": "Tim Collins"
+                "band": "Tim Collins",
+                "category": "Music"
             }
         ],
         "Smalls": [
@@ -219,13 +249,15 @@
                 "id": "show1",
                 "time": "7:30 PM",
                 "doorsOpen": "7:00 PM",
-                "band": "Tim Collins Quartet"
+                "band": "Tim Collins Quartet",
+                "category": "Music"
             },
             {
                 "id": "show2",
                 "time": "9:00 PM",
                 "doorsOpen": "8:30 PM",
-                "band": "Tim Collins Quartet"
+                "band": "Tim Collins Quartet",
+                "category": "Music"
             }
         ],
         "The Stone": [
@@ -233,13 +265,15 @@
                 "id": "show1",
                 "time": "8:30 PM",
                 "doorsOpen": "8:00 PM",
-                "band": "Kevin Hays"
+                "band": "Kevin Hays",
+                "category": "Music"
             },
             {
                 "id": "show2",
                 "time": "",
                 "doorsOpen": "",
-                "band": ""
+                "band": "",
+                "category": "Music"
             }
         ],
         "The Village Vanguard": [
@@ -247,13 +281,15 @@
                 "id": "show1",
                 "time": "8:00 PM",
                 "doorsOpen": "7:00 PM",
-                "band": "Bill Frisell"
+                "band": "Bill Frisell",
+                "category": "Music"
             },
             {
                 "id": "show2",
                 "time": "10:00 PM",
                 "doorsOpen": "9:30 PM",
-                "band": "Bill Frisell"
+                "band": "Bill Frisell",
+                "category": "Music"
             }
         ]
     },
@@ -263,13 +299,15 @@
                 "id": "show1",
                 "time": "8:00 PM",
                 "doorsOpen": "6:00 PM",
-                "band": "The Dirty Dozen Brass Band"
+                "band": "The Dirty Dozen Brass Band",
+                "category": "Music"
             },
             {
                 "id": "show2",
                 "time": "10:30 PM",
                 "doorsOpen": "10:00 PM",
-                "band": "The Dirty Dozen Brass Band"
+                "band": "The Dirty Dozen Brass Band",
+                "category": "Music"
             }
         ],
         "Jazz at Lincoln Center": [
@@ -277,13 +315,15 @@
                 "id": "show1",
                 "time": "7:00 PM",
                 "doorsOpen": "6:00 PM",
-                "band": "Akira Tana's Osaka"
+                "band": "Akira Tana's Osaka",
+                "category": "Music"
             },
             {
                 "id": "show2",
                 "time": "9:00 PM",
                 "doorsOpen": "8:30 PM",
-                "band": "The Lost Melody Plays"
+                "band": "The Lost Melody Plays",
+                "category": "Music"
             }
         ],
         "Mezzrow": [
@@ -291,13 +331,15 @@
                 "id": "show1",
                 "time": "7:30 PM",
                 "doorsOpen": "7:00 PM",
-                "band": "Art Hirahara"
+                "band": "Art Hirahara",
+                "category": "Music"
             },
             {
                 "id": "show2",
                 "time": "9:00 PM",
                 "doorsOpen": "8:30 PM",
-                "band": "Art Hirahara"
+                "band": "Art Hirahara",
+                "category": "Music"
             }
         ],
         "Smalls": [
@@ -305,13 +347,15 @@
                 "id": "show1",
                 "time": "7:30 PM",
                 "doorsOpen": "7:00 PM",
-                "band": "Adam Kolker Quartet"
+                "band": "Adam Kolker Quartet",
+                "category": "Music"
             },
             {
                 "id": "show2",
                 "time": "9:00 PM",
                 "doorsOpen": "8:30 PM",
-                "band": "Adam Kolker Quartet"
+                "band": "Adam Kolker Quartet",
+                "category": "Music"
             }
         ],
         "The Stone": [
@@ -319,13 +363,15 @@
                 "id": "show1",
                 "time": "8:30 PM",
                 "doorsOpen": "8:00 PM",
-                "band": "Kevin Hays"
+                "band": "Kevin Hays",
+                "category": "Music"
             },
             {
                 "id": "show2",
                 "time": "",
                 "doorsOpen": "",
-                "band": ""
+                "band": "",
+                "category": "Music"
             }
         ],
         "The Village Vanguard": [
@@ -333,13 +379,15 @@
                 "id": "show1",
                 "time": "8:00 PM",
                 "doorsOpen": "7:00 PM",
-                "band": "Bill Frisell"
+                "band": "Bill Frisell",
+                "category": "Music"
             },
             {
                 "id": "show2",
                 "time": "10:00 PM",
                 "doorsOpen": "9:30 PM",
-                "band": "Bill Frisell"
+                "band": "Bill Frisell",
+                "category": "Music"
             }
         ]
     },
@@ -349,13 +397,15 @@
                 "id": "show1",
                 "time": "8:00 PM",
                 "doorsOpen": "6:00 PM",
-                "band": "The Dirty Dozen Brass Band"
+                "band": "The Dirty Dozen Brass Band",
+                "category": "Music"
             },
             {
                 "id": "show2",
                 "time": "10:30 PM",
                 "doorsOpen": "10:00 PM",
-                "band": "The Dirty Dozen Brass Band"
+                "band": "The Dirty Dozen Brass Band",
+                "category": "Music"
             }
         ],
         "Jazz at Lincoln Center": [
@@ -363,13 +413,15 @@
                 "id": "show1",
                 "time": "7:00 PM",
                 "doorsOpen": "6:00 PM",
-                "band": "Akira Tana's Osaka"
+                "band": "Akira Tana's Osaka",
+                "category": "Music"
             },
             {
                 "id": "show2",
                 "time": "9:00 PM",
                 "doorsOpen": "8:30 PM",
-                "band": "The Lost Melody Plays"
+                "band": "The Lost Melody Plays",
+                "category": "Music"
             }
         ],
         "Mezzrow": [
@@ -377,13 +429,15 @@
                 "id": "show1",
                 "time": "7:30 PM",
                 "doorsOpen": "7:00 PM",
-                "band": "Art Hirahara"
+                "band": "Art Hirahara",
+                "category": "Music"
             },
             {
                 "id": "show2",
                 "time": "9:00 PM",
                 "doorsOpen": "8:30 PM",
-                "band": "Art Hirahara"
+                "band": "Art Hirahara",
+                "category": "Music"
             }
         ],
         "Smalls": [
@@ -391,13 +445,15 @@
                 "id": "show1",
                 "time": "6:00 PM",
                 "doorsOpen": "5:00 PM",
-                "band": "Dave Scott Quartet"
+                "band": "Dave Scott Quartet",
+                "category": "Music"
             },
             {
                 "id": "show2",
                 "time": "7:30 PM",
                 "doorsOpen": "7:00 PM",
-                "band": "Dave Scott Quartet"
+                "band": "Dave Scott Quartet",
+                "category": "Music"
             }
         ],
         "The Stone": [
@@ -405,13 +461,15 @@
                 "id": "show1",
                 "time": "8:30 PM",
                 "doorsOpen": "8:00 PM",
-                "band": "Kevin Hays"
+                "band": "Kevin Hays",
+                "category": "Music"
             },
             {
                 "id": "show2",
                 "time": "",
                 "doorsOpen": "",
-                "band": ""
+                "band": "",
+                "category": "Music"
             }
         ],
         "The Village Vanguard": [
@@ -419,13 +477,15 @@
                 "id": "show1",
                 "time": "8:00 PM",
                 "doorsOpen": "7:00 PM",
-                "band": "Bill Frisell"
+                "band": "Bill Frisell",
+                "category": "Music"
             },
             {
                 "id": "show2",
                 "time": "10:00 PM",
                 "doorsOpen": "9:30 PM",
-                "band": "Bill Frisell"
+                "band": "Bill Frisell",
+                "category": "Music"
             }
         ]
     }

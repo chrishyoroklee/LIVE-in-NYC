@@ -14,6 +14,7 @@ interface Show {
   time: string;
   doorsOpen: string;
   band: string;
+  category?: string;
 }
 
 interface VenueShows {
@@ -34,29 +35,35 @@ export default function HomeScreen() {
 
   const [isLoading, setIsLoading] = useState(true); // State to manage loading
   const days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-  const currentDayIndex = new Date().getDay();
   const [selectedDay, setSelectedDay] = useState(new Date());
-
+  const [selectedCategory, setSelectedCategory] = useState('Music');
   const [shows, setShows] = useState<{ venue: string; shows: Show[] }[]>([]);
+
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false); 
     }, 3000);
   }, []);
 
+  const formattedDate = selectedDay.toISOString().split('T')[0];
+
   useEffect(() => {
-    
     const dayShows = jazzData[formattedDate as keyof typeof jazzData];
     
     if (dayShows) {
       const venuesWithShows = Object.entries(dayShows).map(([venue, shows]) => {
-        return { venue, shows };
-      });
+        return { 
+          venue, 
+          shows: shows.filter(show => show?.category === selectedCategory || !show?.category) 
+        };
+      }).filter(venueWithShows => venueWithShows.shows.length > 0);
+
       setShows(venuesWithShows);
     } else {
       setShows([]); 
     }
-  }, [selectedDay]);
+  }, [selectedDay, selectedCategory]);
+
 
   const handleDayChange = (dayIndex: number) => {
     const date = new Date();
@@ -67,7 +74,13 @@ export default function HomeScreen() {
     setSelectedDay(selectedDate);
   };
 
-  const formattedDate = selectedDay.toISOString().split('T')[0];
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategory(category);
+  };
+
+  const filteredShows = shows.filter(venueWithShows => 
+    venueWithShows.shows.some(show => show.category === selectedCategory)
+  );
   
   const handleSettingsScreen = () => {
     navigation.navigate('settings');
@@ -109,6 +122,27 @@ export default function HomeScreen() {
         {/* <TouchableOpacity onPress={handleLoadingScreen} style={{ marginTop: 20, marginBottom: 20 }}>
             <Text>Go to Loading Screen</Text>
         </TouchableOpacity> */}
+
+        <CategorySelector>
+          <CategoryButton
+            isSelected ={selectedCategory === 'Music'}
+            onPress={() => handleCategoryChange('Music')}
+          >
+            <CategoryText isSelected ={selectedCategory === 'Music'}>Music</CategoryText>
+          </CategoryButton>
+          <CategoryButton
+            isSelected ={selectedCategory === 'Theatre'}
+            onPress={() => handleCategoryChange('Theatre')}
+          >
+            <CategoryText isSelected ={selectedCategory === 'Theatre'}>Theatre</CategoryText>
+          </CategoryButton>
+          <CategoryButton
+            isSelected ={selectedCategory === 'Art'}
+            onPress={() => handleCategoryChange('Art')}
+          >
+            <CategoryText isSelected ={selectedCategory === 'Art'}>Art</CategoryText>
+          </CategoryButton>
+        </CategorySelector>
         
         <DaySelector>
           <FlatList
@@ -129,7 +163,10 @@ export default function HomeScreen() {
         </SeeAll>
         
         <Content contentContainerStyle={{ alignItems: 'center', paddingVertical: theme.spacing(5) }}>
-            {shows.map(({ venue, shows }) => (
+            {shows.length === 0 ? (
+               <NoEventsText>No events available for this category.</NoEventsText>      
+            ) : (
+            shows.map(({ venue, shows }) => (
               <View key={venue} style={{ width: '100%' }}>
                 {shows.map(show => (
                   <TouchableOpacity
@@ -159,7 +196,8 @@ export default function HomeScreen() {
                   </TouchableOpacity>
                 ))}
               </View>
-            ))}
+            ))
+          )}
         </Content>
     </Container>
   );
@@ -170,11 +208,31 @@ const Container = styled(SafeAreaView)(({ theme }) => ({
   backgroundColor: theme.colors.background.screen,
 }));
 
-const ImageContainer = styled(SafeAreaView)(({ theme }) => ({
-  flex: 1,
+const ImageContainer = styled(View)(({ theme }) => ({
   justifyContent: 'center',
   alignItems: 'center',
-  paddingTop: theme.spacing(-12),
+  marginTop: theme.spacing(-10),
+  marginBottom: theme.spacing(-2), 
+}));
+
+const CategorySelector = styled(View)(({ theme }) => ({
+  flexDirection: 'row',
+  justifyContent: 'flex-start',
+  paddingLeft: theme.spacing(2),
+  paddingVertical: theme.spacing(3),
+  backgroundColor: theme.colors.background.primary
+}));
+
+const CategoryButton = styled(TouchableOpacity)<{ isSelected: boolean }>(({ theme, isSelected }) => ({
+  backgroundColor: isSelected ? theme.colors.button.primary : theme.colors.button.secondary,
+  padding: theme.spacing(2),
+  borderRadius: theme.spacing(6),
+  marginHorizontal: theme.spacing(2),
+}));
+
+const CategoryText = styled(Text)<{ isSelected: boolean }>(({ theme, isSelected }) => ({
+  color: isSelected ? theme.colors.text.primary : theme.colors.text.secondary,
+  fontWeight: 'bold',
 }));
 
 const Header = styled(View)(({ theme }) => ({
@@ -222,6 +280,7 @@ const SeeAllText = styled(Text)(({ theme }) => ({
 }));
 
 const Content = styled.ScrollView({
+  flex: 1,
   flexGrow: 1,
 });
 
@@ -286,3 +345,9 @@ const TimeDetails = styled(Text)(({ theme }) => ({
 }));
 
 
+const NoEventsText = styled(Text)(({ theme }) => ({
+  color: theme.colors.text.secondary,
+  fontSize: 18,
+  textAlign: 'center',
+  marginTop: theme.spacing(5),
+}));
