@@ -211,7 +211,7 @@ const Container = styled(SafeAreaView)(({ theme }) => ({
 const ImageContainer = styled(View)(({ theme }) => ({
   justifyContent: 'center',
   alignItems: 'center',
-  marginTop: theme.spacing(-10),
+  marginTop: theme.spacing(-6),
   marginBottom: theme.spacing(-2), 
 }));
 
