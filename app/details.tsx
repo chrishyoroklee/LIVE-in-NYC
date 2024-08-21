@@ -74,7 +74,7 @@ export default function DetailsScreen() {
   }, []);
 
   useEffect(() => {
-    const formattedDate = `${selectedDay.getFullYear()}-${String(selectedDay.getMonth() + 1).padStart(2, '0')}-${String(selectedDay.getDate()).padStart(2, '0')}`;
+    const formattedDate = selectedDay.toISOString().split('T')[0];
     const dayShows = jazzData[formattedDate as keyof typeof jazzData];
 
     if (dayShows) {
@@ -88,7 +88,7 @@ export default function DetailsScreen() {
   }, [selectedDay]);
 
   const handleDateChange = (date: Date) => {
-    setSelectedDay(date); // Update the selected day to the chosen date
+    setSelectedDay(date); 
   };
 
   const formattedDate = selectedDay.toISOString().split('T')[0];
@@ -164,10 +164,12 @@ export default function DetailsScreen() {
             {shows.map(show => (
               <TouchableOpacity
               key={show.id}
-              onPress={() => navigation.navigate('event', {
-                venue: venue,
-                date: formattedDate
-              })}
+              onPress={() => 
+                navigation.navigate('event', {
+                  venue: venue,
+                  date: formattedDate,
+                 })
+              }
               style={{ 
                 flexDirection: 'row', 
                 alignItems: 'center', 
