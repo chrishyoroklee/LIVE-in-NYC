@@ -91,23 +91,11 @@ export default function DetailsScreen() {
     setSelectedDay(date); // Update the selected day to the chosen date
   };
 
+  const formattedDate = selectedDay.toISOString().split('T')[0];
 
   const handleFavoritesScreen = () => {
     navigation.navigate('favorites');
   };
-
-  const venues = [
-    {
-      name: 'Smalls',
-      event: 'Livestream, J',
-      time: '5:30 PM (Doors 4:30PM)',
-    },
-    {
-      name: 'Birdland',
-      event: 'Livestream, A',
-      time: '5:30 PM (Doors 4:30PM)',
-    },
-  ];
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -178,7 +166,7 @@ export default function DetailsScreen() {
               key={show.id}
               onPress={() => navigation.navigate('event', {
                 venue: venue,
-                date: selectedDay
+                date: formattedDate
               })}
               style={{ 
                 flexDirection: 'row', 

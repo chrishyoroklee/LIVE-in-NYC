@@ -28,7 +28,12 @@ export default function EventScreen() {
   const theme = useTheme();
   const route = useRoute();
 
-  const { venue, date } = route.params as { venue: string; date: Date };
+  const { venue, date } = route.params as { venue: string; date: string };
+
+  if (!date) {
+    console.error('Date is undefined');
+    return <Text>Error: Date is not defined</Text>;
+  }
 
   const handleFavoritesScreen = () => {
     navigation.navigate('favorites');
@@ -38,21 +43,13 @@ export default function EventScreen() {
     navigation.goBack();
   };
 
-  const venues = [
-    {
-      name: 'Smalls',
-      event: 'Livestream, J',
-      time: '5:30 PM (Doors 4:30PM)',
-    },
-  ];
-
   // Format the date to match the keys in your jazzData JSON
-  const formattedDate = date.toISOString().split('T')[0];
+  const formattedDate = date;
 
   // Retrieve the events for the selected date and venue
   const venueEvents = (jazzData as JazzData)[formattedDate]?.[venue] || [];
 
-  const displayDate = date.toLocaleDateString('en-US', { 
+  const displayDate = new Date(date).toLocaleDateString('en-US', { 
     weekday: 'long', 
     year: 'numeric', 
     month: 'long', 

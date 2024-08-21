@@ -46,7 +46,7 @@ export default function HomeScreen() {
   }, []);
 
   useEffect(() => {
-    const formattedDate = `${selectedDay.getFullYear()}-${String(selectedDay.getMonth() + 1).padStart(2, '0')}-${String(selectedDay.getDate()).padStart(2, '0')}`;
+    
     const dayShows = jazzData[formattedDate as keyof typeof jazzData];
     
     if (dayShows) {
@@ -62,10 +62,14 @@ export default function HomeScreen() {
   const handleDayChange = (dayIndex: number) => {
     const date = new Date();
     const todayIndex = date.getDay();
-    const selectedDate = new Date(date.setDate(date.getDate() + (dayIndex - todayIndex)));
+    const diff = dayIndex - todayIndex;
+    const selectedDate = new Date(date);
+    selectedDate.setDate(date.getDate() + diff); // Ensure correct date is set
     setSelectedDay(selectedDate);
   };
 
+  const formattedDate = selectedDay.toISOString().split('T')[0];
+  
   const handleSettingsScreen = () => {
     navigation.navigate('settings');
   };
@@ -93,7 +97,6 @@ export default function HomeScreen() {
             </TouchableOpacity>
         </Header>
 
-        {/* <Title>{`LIVE NYC`}</Title> */}
 
         <SearchBar placeholder="Artists, venues, and events"/>
 
@@ -127,7 +130,7 @@ export default function HomeScreen() {
                     key={show.id}
                     onPress={() => navigation.navigate('event', {
                       venue: venue,
-                      date: selectedDay
+                      date: formattedDate
                     })}
                     style={{ 
                       flexDirection: 'row', 
