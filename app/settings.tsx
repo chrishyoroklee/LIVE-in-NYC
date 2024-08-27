@@ -12,9 +12,9 @@ interface SettingsOption {
 
 const settingsOptions = [
   { id: '1', title: 'Location', action: () => console.log('Location Pressed') },
-  { id: '2', title: 'Remove Ads', action: () => console.log('Remove Ads Pressed') },
-  { id: '3', title: 'Restore Purchases', action: () => console.log('Restore Purchases Pressed') },
-  { id: '4', title: 'Restore Default Venue Order', action: () => console.log('Restore Default Venue Order Pressed') },
+  { id: '2', title: 'Share this app', action: () => console.log('Share this app Pressed') },
+  { id: '3', title: 'Remove Ads', action: () => console.log('Remove Ads Pressed') },
+  { id: '4', title: 'Restore Purchases', action: () => console.log('Restore Purchases Pressed') },
   { id: '5', title: 'Contact', action: () => console.log('Contact Pressed') },
   { id: '6', title: 'Provide Feedback', action: () => console.log('Provide Feedback Pressed') },
 ];
