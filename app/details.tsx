@@ -6,7 +6,6 @@ import styled from '@emotion/native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
-import jazzData from '../data/JazzData.json';
 
 interface DayCircleProps {
   isSelected: boolean;
@@ -69,17 +68,33 @@ export default function DetailsScreen() {
   }, []);
 
   useEffect(() => {
-    const formattedDate = selectedDay.toISOString().split('T')[0];
-    const dayShows = jazzData[formattedDate as keyof typeof jazzData];
-
-    if (dayShows) {
-      const venuesWithShows = Object.entries(dayShows).map(([venue, shows]) => {
-        return { venue, shows };
-      });
-      setShows(venuesWithShows);
-    } else {
-      setShows([]); 
-    }
+    const fetchJazzData = async () => {
+      try {
+        const response = await fetch('https://raw.githubusercontent.com/chrishyoroklee/live-in-nyc-data/main/JazzData.json');
+        const data = await response.json();
+        const formattedDate = selectedDay.toISOString().split('T')[0];
+        const dayShows = data[formattedDate as keyof typeof data];
+  
+        if (dayShows) {
+          const venuesWithShows = Object.entries(dayShows).map(([venue, shows]) => {
+            if (Array.isArray(shows) && shows.every(show => typeof show === 'object')) {
+            return { venue, shows };
+            } else {
+              // Handle case where shows is not the expected type
+              console.warn('Invalid show data format for venue:', venue);
+              return { venue, shows: [] }; // Return empty shows array
+            }
+          });
+          setShows(venuesWithShows);
+        } else {
+          setShows([]);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+  
+    fetchJazzData();
   }, [selectedDay]);
 
   const handleDateChange = (date: Date) => {

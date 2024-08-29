@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TouchableOpacity, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTheme } from '@emotion/react';
@@ -28,6 +28,23 @@ export default function EventScreen() {
   const route = useRoute();
 
   const { venue, date } = route.params as { venue: string; date: string };
+  const [venueEvents, setVenueEvents] = useState<Event[]>([]);
+
+  useEffect(() => {
+    const fetchJazzData = async () => {
+      try {
+        const response = await fetch('https://raw.githubusercontent.com/chrishyoroklee/live-in-nyc-data/main/JazzData.json');
+        const data: JazzData = await response.json();
+        const formattedDate = date;
+        const events = data[formattedDate]?.[venue] || [];
+        setVenueEvents(events);
+      } catch(error){
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchJazzData();
+  }, [venue, date]);
 
   if (!date) {
     console.error('Date is undefined');
@@ -42,18 +59,19 @@ export default function EventScreen() {
     navigation.goBack();
   };
 
-  // Format the date to match the keys in your jazzData JSON
-  const formattedDate = date;
+  // // Format the date to match the keys in your jazzData JSON
+  // const formattedDate = date;
 
-  // Retrieve the events for the selected date and venue
-  const venueEvents = (jazzData as JazzData)[formattedDate]?.[venue] || [];
+  // // Retrieve the events for the selected date and venue
+  // const venueEvents = (jazzData as JazzData)[formattedDate]?.[venue] || [];
 
-  const displayDate = new Date(date).toLocaleDateString('en-US', { 
-    weekday: 'long', 
-    year: 'numeric', 
-    month: 'long', 
-    day: 'numeric' 
-  });
+  const localDate = new Date(new Date(date).getTime() + new Date().getTimezoneOffset() * 60000);
+  const displayDate = localDate.toLocaleDateString('en-US', { 
+      weekday: 'long', 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric' 
+    });
 
 
   return (
@@ -135,7 +153,7 @@ const Header = styled(View)(({ theme }) => ({
 }));
 
 const Title = styled(Text)(({ theme }) => ({
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: 'bold',
     color: theme.colors.text.primary,
     marginBottom: theme.spacing(5),

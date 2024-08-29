@@ -39,38 +39,65 @@ export default function HomeScreen() {
   const [selectedCategory, setSelectedCategory] = useState('Music');
   const [shows, setShows] = useState<{ venue: string; shows: Show[] }[]>([]);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false); 
-    }, 3000);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setIsLoading(false); 
+  //   }, 3000);
+  // }, []);
 
+  // const formattedDate = selectedDay.toISOString().split('T')[0];
+
+  // useEffect(() => {
+  //   const dayShows = jazzData[formattedDate as keyof typeof jazzData];
+    
+  //   if (dayShows) {
+  //     const venuesWithShows = Object.entries(dayShows).map(([venue, shows]) => {
+  //       return { 
+  //         venue, 
+  //         shows: shows.filter(show => show?.category === selectedCategory || !show?.category) 
+  //       };
+  //     }).filter(venueWithShows => venueWithShows.shows.length > 0);
+
+  //     setShows(venuesWithShows);
+  //   } else {
+  //     setShows([]); 
+  //   }
+  // }, [selectedDay, selectedCategory]);
   const formattedDate = selectedDay.toISOString().split('T')[0];
 
   useEffect(() => {
-    const dayShows = jazzData[formattedDate as keyof typeof jazzData];
-    
-    if (dayShows) {
-      const venuesWithShows = Object.entries(dayShows).map(([venue, shows]) => {
-        return { 
-          venue, 
-          shows: shows.filter(show => show?.category === selectedCategory || !show?.category) 
-        };
-      }).filter(venueWithShows => venueWithShows.shows.length > 0);
+    fetch('https://raw.githubusercontent.com/chrishyoroklee/live-in-nyc-data/main/JazzData.json')
+    .then(response => response.json())
+    .then(jazzData => {
+      
+      const dayShows = jazzData[formattedDate as keyof typeof jazzData];
 
-      setShows(venuesWithShows);
-    } else {
-      setShows([]); 
-    }
-  }, [selectedDay, selectedCategory]);
+      if (dayShows) {
+        const venuesWithShows = Object.entries(dayShows).map(([venue, shows]) => {
+          return { 
+            venue, 
+            shows: (shows as Show[]).filter(show => show?.category === selectedCategory || !show?.category) 
+          };
+        }).filter(venueWithShows => venueWithShows.shows.length > 0);
 
+        setShows(venuesWithShows);
+      } else {
+        setShows([]); 
+      }
+      setIsLoading(false);
+    })
+    .catch(error => {
+      console.error('Error fetching JSON:', error);
+      setIsLoading(false);
+    });
+  }, [formattedDate, selectedCategory]);
 
   const handleDayChange = (dayIndex: number) => {
-    const date = new Date();
-    const todayIndex = date.getDay();
+    const today = new Date();
+    const todayIndex = today.getDay();
     const diff = dayIndex - todayIndex;
-    const selectedDate = new Date(date);
-    selectedDate.setDate(date.getDate() + diff);
+    const selectedDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + diff, 12, 0, 0);
+    // selectedDate.setDate(date.getDate() + diff);
     setSelectedDay(selectedDate);
   };
 

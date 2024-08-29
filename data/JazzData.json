@@ -2,190 +2,190 @@
     "2024-08-26": {
         "Blue Note NYC": [
             {
-                "id": "show1",
                 "time": "8:00 PM",
                 "doorsOpen": "6:00 PM",
                 "band": "PLUMB - David Murray/Questlove/Ray Angry",
-                "category": "Music"
+                "category": "Music",
+                "genre": "Jazz"
             }
         ],
         "Mezzrow": [
             {
-                "id": "show1",
                 "time": "7:30 PM",
                 "doorsOpen": "7:00 PM",
                 "band": "Chris Pattishall",
-                "category": "Music"
+                "category": "Music",
+                "genre": "Jazz"
             }
         ],
         "Smalls": [
             {
-                "id": "show1",
                 "time": "7:30 PM",
                 "doorsOpen": "7:00 PM",
                 "band": "Jason Tiemann Quartet",
-                "category": "Music"
+                "category": "Music",
+                "genre": "Jazz"
             }
         ],
         "The Village Vanguard": [
             {
-                "id": "show1",
                 "time": "8:00 PM",
                 "doorsOpen": "7:00 PM",
                 "band": "Vanguard Jazz Orchestra",
-                "category": "Music"
+                "category": "Music",
+                "genre": "Jazz"
             }
         ]
     },
     "2024-08-27": {
         "Blue Note NYC": [
             {
-                "id": "show1",
                 "time": "8:00 PM",
                 "doorsOpen": "6:00 PM",
                 "band": "PLUMB - David Murray/Questlove/Ray Angry",
-                "category": "Music"
+                "category": "Music",
+                "genre": "Jazz"
             }
         ],
         "Mezzrow": [
             {
-                "id": "show1",
                 "time": "7:30 PM",
                 "doorsOpen": "7:00 PM",
                 "band": "Neal Kirkwood",
-                "category": "Music"
+                "category": "Music",
+                "genre": "Jazz"
             }
         ],
         "Smalls": [
             {
-                "id": "show1",
                 "time": "7:30 PM",
                 "doorsOpen": "7:00 PM",
                 "band": "Steve Nelson Quartet",
-                "category": "Music"
+                "category": "Music",
+                "genre": "Jazz"
             }
         ],
         "The Village Vanguard": [
             {
-                "id": "show1",
                 "time": "8:00 PM",
                 "doorsOpen": "7:00 PM",
                 "band": "Bill Frisell",
-                "category": "Music"
+                "category": "Music",
+                "genre": "Jazz"
             }
         ]
     },
     "2024-08-28": {
         "Blue Note NYC": [
             {
-                "id": "show1",
                 "time": "8:00 PM",
                 "doorsOpen": "6:00 PM",
                 "band": "PLUMB - David Murray/Questlove/Ray Angry",
-                "category": "Music"
+                "category": "Music",
+                "genre": "Jazz"
             }
         ],
         "Mezzrow": [
             {
-                "id": "show1",
                 "time": "7:30 PM",
                 "doorsOpen": "7:00 PM",
                 "band": "Tim Collins",
-                "category": "Music"
+                "category": "Music",
+                "genre": "Jazz"
             }
         ],
         "Smalls": [
             {
-                "id": "show1",
                 "time": "7:30 PM",
                 "doorsOpen": "7:00 PM",
                 "band": "Tim Collins Quartet",
-                "category": "Music"
+                "category": "Music",
+                "genre": "Jazz"
             }
         ],
         "The Village Vanguard": [
             {
-                "id": "show1",
                 "time": "8:00 PM",
                 "doorsOpen": "7:00 PM",
                 "band": "Bill Frisell",
-                "category": "Music"
+                "category": "Music",
+                "genre": "Jazz"
             }
         ]
     },
     "2024-08-29": {
         "Blue Note NYC": [
             {
-                "id": "show1",
                 "time": "8:00 PM",
                 "doorsOpen": "6:00 PM",
                 "band": "The Dirty Dozen Brass Band",
-                "category": "Music"
+                "category": "Music",
+                "genre": "Jazz"
             }
         ],
         "Mezzrow": [
             {
-                "id": "show1",
                 "time": "7:30 PM",
                 "doorsOpen": "7:00 PM",
                 "band": "Art Hirahara",
-                "category": "Music"
+                "category": "Music",
+                "genre": "Jazz"
             }
         ],
         "Smalls": [
             {
-                "id": "show1",
                 "time": "7:30 PM",
                 "doorsOpen": "7:00 PM",
                 "band": "Adam Kolker Quartet",
-                "category": "Music"
+                "category": "Music",
+                "genre": "Jazz"
             }
         ],
         "The Village Vanguard": [
             {
-                "id": "show1",
                 "time": "8:00 PM",
                 "doorsOpen": "7:00 PM",
                 "band": "Bill Frisell",
-                "category": "Music"
+                "category": "Music",
+                "genre": "Jazz"
             }
         ]
     },
     "2024-08-30": {
         "Blue Note NYC": [
             {
-                "id": "show1",
                 "time": "8:00 PM",
                 "doorsOpen": "6:00 PM",
                 "band": "The Dirty Dozen Brass Band",
-                "category": "Music"
+                "category": "Music",
+                "genre": "Jazz"
             }
         ],
         "Mezzrow": [
             {
-                "id": "show1",
                 "time": "7:30 PM",
                 "doorsOpen": "7:00 PM",
                 "band": "Art Hirahara",
-                "category": "Music"
+                "category": "Music",
+                "genre": "Jazz"
             }
         ],
         "Smalls": [
             {
-                "id": "show1",
                 "time": "6:00 PM",
                 "doorsOpen": "5:00 PM",
                 "band": "Dave Scott Quartet",
-                "category": "Music"
+                "category": "Music",
+                "genre": "Jazz"
             }
         ],
         "The Village Vanguard": [
             {
-                "id": "show1",
                 "time": "8:00 PM",
                 "doorsOpen": "7:00 PM",
                 "band": "Bill Frisell",
-                "category": "Music"
+                "category": "Music",
+                "genre": "Jazz"
             }
         ]
     }
